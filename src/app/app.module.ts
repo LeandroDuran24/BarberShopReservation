@@ -4,9 +4,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+import { InicioSesionComponent } from './components/inicio-sesion/inicio-sesion.component';
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    InicioSesionComponent
   ],
   imports: [
     BrowserModule,
