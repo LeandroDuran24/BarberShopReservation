@@ -10,19 +10,23 @@ import { InicioComponent } from './components/inicio/inicio.component';
 import { RouterModule } from '@angular/router';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgbModule, NgbPaginationModule, NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
+import { RegistrarUsuarioComponent } from './components/registrar-usuario/registrar-usuario.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     InicioSesionComponent,
     InicioComponent,
-    NavbarComponent
+    NavbarComponent,
+    RegistrarUsuarioComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule, RouterModule, BrowserAnimationsModule
+    ReactiveFormsModule, RouterModule, BrowserAnimationsModule, NgbModule, NgbPaginationModule, NgbAlertModule
   ],
   providers: [],
   bootstrap: [AppComponent]
