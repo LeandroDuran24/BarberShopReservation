@@ -51,7 +51,6 @@
                             *ngIf="registrarUsuario.get('nombreUsuario')?.hasError('required') && registrarUsuario.get('nombreUsuario')?.touched">Nombre
                             es
                             requerido</span>
-
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -60,15 +59,23 @@
                         <input type="password" formControlName="password" placeholder="Enter your Password"
                             class="form-control">
                         <span class="text-danger"
-                            *ngIf="registrarUsuario.get('password')?.hasError('required') && registrarUsuario.get('password')?.touched">Nombre
+                            *ngIf="registrarUsuario.get('password')?.hasError('required') && registrarUsuario.get('password')?.touched">Password
                             es
                             requerido</span>
+
+                            <span class="text-danger "
+                            *ngIf="registrarUsuario.get('password')?.hasError('minlength') && registrarUsuario.get('password')?.touched">
+                            La contraseña debe tener minimo 4 digitos
+                        </span>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
                         <label>Confirmar</label>
-                        <input type="password" placeholder="Enter your Password" class="form-control">
+                        <input type="password" formControlName="confirmar" placeholder="Enter your Password" class="form-control">
+                        <span class="text-danger" *ngIf="registrarUsuario.hasError('notSame')">
+                            Contraseñas no coinciden
+                        </span>
                     </div>
 
                 </div>
@@ -142,11 +149,8 @@
                     <button type="submit" class="btn btn-primary"
                         [disabled]="this.registrarUsuario.invalid"><span>Aceptar</span></button>
                     <button class="btn btn-secondary" (click)="reset()"><span>Cancelar</span></button>
-
                 </div>
             </div>
-
-
         </form>
     </div>
 </div>

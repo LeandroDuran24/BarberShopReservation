@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { LoginService } from 'src/app/services/login.service';
 import { Usuario } from 'src/models/usuario';
 
 @Component({
@@ -15,7 +17,7 @@ export class InicioSesionComponent implements OnInit {
   loading = false;
 
 
-  constructor(private formBuilder: FormBuilder, private router: Router) {
+  constructor(private formBuilder: FormBuilder, private router: Router, private loginService: LoginService, private toast: ToastrService) {
     this.login = this.formBuilder.group({
       usuario: ['', Validators.required],
       password: ['', Validators.required]
@@ -35,7 +37,18 @@ export class InicioSesionComponent implements OnInit {
       password: this.login.value.password
     }
 
-    this.router.navigate(['/inicio']);
+    this.loading = true;
+    this.loginService.login(usuario).subscribe(data => {
+      this.loading = false;
+      this.login.reset();
+      this.router.navigate(['/inicio']);
+
+    }, error => {
+      this.loading = false;
+      this.toast.error(error.error, 'Error!');
+      this.login.reset();
+
+    })
 
   }
 

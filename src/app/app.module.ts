@@ -15,6 +15,9 @@ import { RegistrarUsuarioComponent } from './components/registrar-usuario/regist
 
 //modulos
 import { DataTablesModule } from "angular-datatables";
+import { ToastrModule } from 'ngx-toastr';
+import { HttpClientModule } from '@angular/common/http';
+import { LoadingComponent } from './components/shared/loading/loading.component';
 
 
 @NgModule({
@@ -23,13 +26,16 @@ import { DataTablesModule } from "angular-datatables";
     InicioSesionComponent,
     InicioComponent,
     NavbarComponent,
-    RegistrarUsuarioComponent
+    RegistrarUsuarioComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule, RouterModule, BrowserAnimationsModule, NgbModule, NgbPaginationModule, NgbAlertModule, DataTablesModule
+    HttpClientModule,
+    ReactiveFormsModule, RouterModule, BrowserAnimationsModule, NgbModule, NgbPaginationModule, NgbAlertModule, DataTablesModule,
+    ToastrModule.forRoot() // ToastrModule added
   ],
   providers: [],
   bootstrap: [AppComponent]

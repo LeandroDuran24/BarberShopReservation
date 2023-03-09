@@ -1,7 +1,9 @@
 <div class="login-page bg-light">
     <div class="container">
         <div class="row">
+        
             <div class="col-lg-10 offset-lg-1">
+                
                 <h2 class="mb-2">Inicio de Sesion</h2>
                 <div class="bg-white shadow rounded">
                     <div class="row">
@@ -53,7 +55,8 @@
                         <div class="col-md-5 ps-0 d-none d-md-block">
                             <div id="img" class="form-right h-100 bg-primary text-white text-center pt-5">
 
-
+                                <app-loading *ngIf="loading"></app-loading>
+                                
                             </div>
                         </div>
                     </div>
