@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { InicioSesionComponent } from './components/inicio-sesion/inicio-sesion.component';
+import { InicioSesionComponent } from './components/usuario/inicio-sesion/inicio-sesion.component';
 import { InicioComponent } from './components/inicio/inicio.component';
-import { RegistrarUsuarioComponent } from './components/registrar-usuario/registrar-usuario.component';
+import { RegistrarUsuarioComponent } from './components/usuario/registrar-usuario/registrar-usuario.component';
+import { ConsultaUsuarioComponent } from './components/usuario/consulta-usuario/consulta-usuario.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -10,7 +11,9 @@ const routes: Routes = [
   {
     path: 'inicio', component: InicioComponent, children: [
 
-      { path: 'mantenimientoUsuario', component: RegistrarUsuarioComponent }
+      { path: 'mantenimientoUsuario', component: RegistrarUsuarioComponent },
+      { path: 'consultaUsuario', component: ConsultaUsuarioComponent }
+      
     ]
   },
 
