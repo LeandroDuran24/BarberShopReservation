@@ -13,6 +13,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule, NgbPaginationModule, NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
 import { RegistrarUsuarioComponent } from './components/registrar-usuario/registrar-usuario.component';
 
+//modulos
+import { DataTablesModule } from "angular-datatables";
+
 
 @NgModule({
   declarations: [
@@ -26,7 +29,7 @@ import { RegistrarUsuarioComponent } from './components/registrar-usuario/regist
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule, RouterModule, BrowserAnimationsModule, NgbModule, NgbPaginationModule, NgbAlertModule
+    ReactiveFormsModule, RouterModule, BrowserAnimationsModule, NgbModule, NgbPaginationModule, NgbAlertModule, DataTablesModule
   ],
   providers: [],
   bootstrap: [AppComponent]

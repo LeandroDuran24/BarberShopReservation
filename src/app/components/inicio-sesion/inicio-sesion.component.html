@@ -1,59 +1,67 @@
-<div class="container" id="body">
+<div class="login-page bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 offset-lg-1">
+                <h2 class="mb-2">Inicio de Sesion</h2>
+                <div class="bg-white shadow rounded">
+                    <div class="row">
+                        <div class="col-md-7 pe-0">
+                            <div class="form-left h-100 py-5 px-5">
+                                <form [formGroup]="login" (ngSubmit)="iniciarSesion()" class="row g-4">
 
-    <div class="row" style="width: 100%;">
 
-        <div class="col-lg-4 offset-lg-4">
+                                    <div class="form-group">
+                                        <label>Username<span class="text-danger">*</span></label>
+                                        <div class="input-group mb-2">
+                                            <span class="input-group-text " id="basic-addon1"><i
+                                                    class="bi bi-person-fill"></i></span>
+                                            <input formControlName="usuario" type="text" class="form-control"
+                                                placeholder="Username">
 
-            <div class="module-border-wrap">
+                                        </div>
+                                        <span class="text-danger"
+                                            *ngIf="login.get('usuario')?.hasError('required') && login.get('usuario')?.touched">Usuario
+                                            requerido</span>
+                                    </div>
 
 
-                <div class="card text-center">
-                    <h2>Inicio de Sesion</h2>
+                                    <div class="form-group">
+                                        <label>Password<span class="text-danger">*</span></label>
+                                        <div class="input-group mb-1">
+                                            <span class="input-group-text " id="basic-addon1"><i
+                                                    class="bi bi-lock-fill"></i></span>
+                                            <input formControlName="password" type="password" class="form-control"
+                                                placeholder="Password">
+
+                                        </div>
+                                        <span class="text-danger"
+                                            *ngIf="login.get('password')?.hasError('required') && login.get('password')?.touched">Password
+                                            requerido</span>
+                                    </div>
 
 
-                    <form [formGroup]="login" (ngSubmit)="iniciarSesion()" style="padding: 20px;">
 
-                        <div class="form-group">
-                            <div class="input-group mb-2">
-                                <span class="input-group-text " id="basic-addon1"><i class="bi bi-person"></i></span>
-                                <input formControlName="usuario" type="text" class="form-control"
-                                    placeholder="Username">
+
+
+                                    <div class="form-group text-center ">
+                                        <button type="submit" class="btn btn-primary"
+                                            [disabled]="login.invalid"><span>Aceptar</span></button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-md-5 ps-0 d-none d-md-block">
+                            <div id="img" class="form-right h-100 bg-primary text-white text-center pt-5">
+
 
                             </div>
-                            <span class="text-danger"
-                                *ngIf="login.get('usuario')?.hasError('required') && login.get('usuario')?.touched">Usuario
-                                requerido</span>
                         </div>
-
-
-                        <div class="form-group">
-                            <div class="input-group mb-1">
-                                <span class="input-group-text " id="basic-addon1"><i class="bi bi-lock"></i></span>
-                                <input formControlName="password" type="password" class="form-control"
-                                    placeholder="Password">
-
-                            </div>
-                            <span class="text-danger"
-                                *ngIf="login.get('password')?.hasError('required') && login.get('password')?.touched">Password
-                                requerido</span>
-                        </div>
-
-                        <br>
-
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-primary"
-                                [disabled]="login.invalid"><span>Aceptar</span></button>
-                        </div>
-
-
-
-
-                    </form>
-
+                    </div>
                 </div>
+                <p class="text-end text-secondary mt-3">
+                    © Created for
+                    Ing. Leandro Duran in 2023 </p>
             </div>
         </div>
-
     </div>
-
 </div>

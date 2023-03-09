@@ -1,12 +1,4 @@
-.container {
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-}
-
-#body {
+#img {
     background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../../../assets/img/FondoLogin.jpg);
     background-position: center;
     background-size: cover;
@@ -28,19 +20,10 @@ button {
     transition: .3s;
 }
 
-.card {
-    background-color: transparent;
-    border: none;
-}
 
-input {
-    background: transparent;
-    background: white;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
 
-label, h2, .bi {
+
+h2, .bi, p {
 
     background: -webkit-linear-gradient(#9500ff,
             #09f,
@@ -48,6 +31,7 @@ label, h2, .bi {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+
 
 div span {
 
@@ -70,4 +54,18 @@ button:hover span {
 
 button:active {
     transform: scale(0.9);
+}
+
+
+.login-page {
+    width: 100%;
+    height: 100vh;
+    display: inline-block;
+    display: flex;
+    align-items: center;
+
+}
+
+.form-right i {
+    font-size: 100px;
 }

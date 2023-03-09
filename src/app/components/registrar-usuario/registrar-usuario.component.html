@@ -1,9 +1,152 @@
 <div class="container">
 
-    <div class="row" style="width: 100%;">
+    <h3 class=" header text-center">Mantenimiento de Usuarios</h3>
+    <div class="form-wrap">
+        <form id="survey-form" [formGroup]="registrarUsuario" (ngSubmit)="guardarUsuario()">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input type="text" formControlName="nombre" placeholder="Enter your First name"
+                            class="form-control">
 
-        <h2 class="text-center">Consulta de Usuarios</h2>
+                        <span class="text-danger"
+                            *ngIf="registrarUsuario.get('nombre')?.hasError('required') && registrarUsuario.get('nombre')?.touched">Nombre
+                            es
+                            requerido</span>
 
+                        <span class="text-danger" *ngIf="registrarUsuario.get('nombre')?.hasError('pattern')">Solo
+                            letras</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="form-group">
+                        <label>Apellidos</label>
+                        <input type="text" formControlName="apellidos" placeholder="Enter your Last name"
+                            class="form-control">
+                        <span class="text-danger"
+                            *ngIf="registrarUsuario.get('apellidos')?.hasError('required') && registrarUsuario.get('apellidos')?.touched">Nombre
+                            es
+                            requerido</span>
+
+
+                        <span class="text-danger" *ngIf="registrarUsuario.get('apellidos')?.hasError('pattern')">Solo
+                            letras</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Usuario</label>
+                        <input type="text" formControlName="nombreUsuario" placeholder="Enter your User"
+                            class="form-control">
+
+                        <span class="text-danger"
+                            *ngIf="registrarUsuario.get('nombreUsuario')?.hasError('required') && registrarUsuario.get('nombreUsuario')?.touched">Nombre
+                            es
+                            requerido</span>
+
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" formControlName="password" placeholder="Enter your Password"
+                            class="form-control">
+                        <span class="text-danger"
+                            *ngIf="registrarUsuario.get('password')?.hasError('required') && registrarUsuario.get('password')?.touched">Nombre
+                            es
+                            requerido</span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Confirmar</label>
+                        <input type="password" placeholder="Enter your Password" class="form-control">
+                    </div>
+
+                </div>
+            </div>
+
+            <!--
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label id="number-label" for="number">Age <small>(optional)</small></label>
+                        <input type="number" name="age" id="number" min="10" max="99" class="form-control"
+                            placeholder="Age">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>current role</label>
+                        <select id="dropdown" name="role" class="form-control" required>
+                            <option disabled selected value>Select</option>
+                            <option value="student">Student</option>
+                            <option value="job">Full Time Job</option>
+                            <option value="learner">Full Time Learner</option>
+                            <option value="preferNo">Prefer not to say</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Would you recommend survey to a friend?</label>
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="customRadioInline1" value="Definitely" name="customRadioInline1"
+                                class="custom-control-input" checked="">
+                            <label class="custom-control-label" for="customRadioInline1">Definitely</label>
+                        </div>
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="customRadioInline2" value="Maybe" name="customRadioInline1"
+                                class="custom-control-input">
+                            <label class="custom-control-label" for="customRadioInline2">Maybe</label>
+                        </div>
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="customRadioInline3" value="Not sure" name="customRadioInline1"
+                                class="custom-control-input">
+                            <label class="custom-control-label" for="customRadioInline3">Not sure</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>This survey useful yes or no?</label>
+                        <div class="custom-control custom-checkbox custom-control-inline">
+                            <input type="checkbox" class="custom-control-input" name="yes" value="yes" id="yes"
+                                checked="">
+                            <label class="custom-control-label" for="yes">Yes</label>
+                        </div>
+                        <div class="custom-control custom-checkbox custom-control-inline">
+                            <input type="checkbox" class="custom-control-input" name="no" value="no" id="no">
+                            <label class="custom-control-label" for="no">No</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+-->
+
+            <div class="row">
+                <div class=" text-center ">
+                    <button type="submit" class="btn btn-primary"
+                        [disabled]="this.registrarUsuario.invalid"><span>Aceptar</span></button>
+                    <button class="btn btn-secondary" (click)="reset()"><span>Cancelar</span></button>
+
+                </div>
+            </div>
+
+
+        </form>
     </div>
-
 </div>
