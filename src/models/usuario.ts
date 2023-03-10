@@ -4,12 +4,14 @@ export class Usuario {
     apellidos: string;
     nombreUsuario: string;
     password: string;
+    fechaCreacion?:Date;
 
     constructor() {
         this.nombre = '';
         this.apellidos = '';
         this.nombreUsuario = '';
         this.password = '';
+        
 
     }
 }

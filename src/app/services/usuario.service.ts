@@ -25,5 +25,11 @@ export class UsuarioService {
 
     return this.http.post(this.myAppUrl + this.myApiUrl, usuario);
   }
+
+
+  getListUsuarios():Observable<any>{
+
+    return this.http.get(this.myAppUrl+this.myApiUrl);
+  }
    
 }

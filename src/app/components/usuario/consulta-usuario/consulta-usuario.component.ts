@@ -1,44 +1,49 @@
-import { AfterViewInit, Component, OnInit, Renderer2 } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit, Renderer2 } from '@angular/core';
 import { Router } from '@angular/router';
-import {Subject} from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
+import { Subject } from 'rxjs';
+import { UsuarioService } from 'src/app/services/usuario.service';
+import { Usuario } from 'src/models/usuario';
 
 @Component({
   selector: 'app-consulta-usuario',
   templateUrl: './consulta-usuario.component.html',
   styleUrls: ['./consulta-usuario.component.css']
 })
-export class ConsultaUsuarioComponent implements AfterViewInit, OnInit {
-  dtOptions: DataTables.Settings = {};
-  dtTrigger: Subject<any> = new Subject<any>();
+export class ConsultaUsuarioComponent implements OnInit  {
 
-  constructor(private renderer: Renderer2, private router: Router) { }
+  dtOptions: DataTables.Settings = {};
+
+
+  listUsuario: any = {};
+
+  constructor(private renderer: Renderer2, private router: Router, private usuarioServicio: UsuarioService, private toast: ToastrService) { }
 
   ngOnInit(): void {
     this.dtOptions = {
-      ajax: 'data/data.json',
-      columns: [{
-        title: 'ID',
-        data: 'id'
-      }, {
-        title: 'First name',
-        data: 'firstName'
-      }, {
-        title: 'Last name',
-        data: 'lastName'
-      }, {
-        title: 'Action',
-        render: function (data: any, type: any, full: any) {
-          return 'View';
-        }
-      }]
+      pagingType: 'full_numbers',
+      pageLength: 5,
+    lengthMenu : [5, 10, 25],
+      processing: true
     };
+    this.getListUsuarios();
+
   }
 
-  ngAfterViewInit(): void {
-    this.renderer.listen('document', 'click', (event) => {
-      if (event.target.hasAttribute("view-person-id")) {
-        this.router.navigate(["/person/" + event.target.getAttribute("view-person-id")]);
-      }
-    });
+
+
+
+  getListUsuarios(): void {
+
+    this.usuarioServicio.getListUsuarios().subscribe(data => {
+      this.listUsuario = data;
+
+    }, error => {
+      this.toast.error(error.error, 'Error!');
+    })
+
   }
+
+
+
 }
