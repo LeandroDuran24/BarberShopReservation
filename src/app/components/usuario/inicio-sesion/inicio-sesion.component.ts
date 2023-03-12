@@ -31,6 +31,7 @@ export class InicioSesionComponent implements OnInit {
   iniciarSesion(): void {
 
     const usuario: Usuario = {
+      id: 0,
       nombre: '',
       apellidos: '',
       nombreUsuario: this.login.value.usuario,

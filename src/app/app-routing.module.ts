@@ -4,6 +4,8 @@ import { InicioSesionComponent } from './components/usuario/inicio-sesion/inicio
 import { InicioComponent } from './components/inicio/inicio.component';
 import { RegistrarUsuarioComponent } from './components/usuario/registrar-usuario/registrar-usuario.component';
 import { ConsultaUsuarioComponent } from './components/usuario/consulta-usuario/consulta-usuario.component';
+import { DashboardComponent } from './components/inicio/dashboard/dashboard.component';
+import { EditarUsuarioComponent } from './components/usuario/editar-usuario/editar-usuario.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -11,9 +13,11 @@ const routes: Routes = [
   {
     path: 'inicio', component: InicioComponent, children: [
 
+      { path: 'dashboard', component: DashboardComponent },
       { path: 'mantenimientoUsuario', component: RegistrarUsuarioComponent },
-      { path: 'consultaUsuario', component: ConsultaUsuarioComponent }
-      
+      { path: 'consultaUsuario', component: ConsultaUsuarioComponent },
+      { path: 'editarUsuario/:id', component: EditarUsuarioComponent },
+
     ]
   },
 

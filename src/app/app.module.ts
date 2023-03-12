@@ -19,6 +19,9 @@ import { ToastrModule } from 'ngx-toastr';
 import { HttpClientModule } from '@angular/common/http';
 import { LoadingComponent } from './components/shared/loading/loading.component';
 import { ConsultaUsuarioComponent } from './components/usuario/consulta-usuario/consulta-usuario.component';
+import { DashboardComponent } from './components/inicio/dashboard/dashboard.component';
+import { EditarUsuarioComponent } from './components/usuario/editar-usuario/editar-usuario.component';
+
 
 
 @NgModule({
@@ -29,7 +32,9 @@ import { ConsultaUsuarioComponent } from './components/usuario/consulta-usuario/
     NavbarComponent,
     RegistrarUsuarioComponent,
     LoadingComponent,
-    ConsultaUsuarioComponent
+    ConsultaUsuarioComponent,
+    DashboardComponent,
+    EditarUsuarioComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +42,7 @@ import { ConsultaUsuarioComponent } from './components/usuario/consulta-usuario/
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule, RouterModule, BrowserAnimationsModule, NgbModule, NgbPaginationModule, NgbAlertModule,
-     DataTablesModule,
+    DataTablesModule,
     ToastrModule.forRoot() // ToastrModule added
   ],
   providers: [],

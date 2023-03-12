@@ -22,11 +22,11 @@ export class RegistrarUsuarioComponent {
       nombre: ['', [Validators.required, Validators.pattern('[a-zA-Z ]*')]],
       apellidos: ['', [Validators.required, Validators.pattern('[a-zA-Z ]*')]],
       nombreUsuario: ['', Validators.required],
-      password: ['', [Validators.required,Validators.minLength(4)]],
+      password: ['', [Validators.required, Validators.minLength(4)]],
       confirmar: ['', Validators.required]
 
 
-    },{ validator: this.checkPassword })
+    }, { validator: this.checkPassword })
   }
 
   reset(): void {
@@ -44,6 +44,7 @@ export class RegistrarUsuarioComponent {
   guardarUsuario(): void {
 
     const usuario: Usuario = {
+      id: 0,
       nombre: this.registrarUsuario.value.nombre,
       apellidos: this.registrarUsuario.value.apellidos,
       nombreUsuario: this.registrarUsuario.value.nombreUsuario,
@@ -51,16 +52,16 @@ export class RegistrarUsuarioComponent {
 
     }
 
-    this.loading=true;
+    this.loading = true;
     this.usuarioService.guardarUsuario(usuario).subscribe(data => {
 
       this.reset();
-      this.loading=false;
-      this.toastr.success('Se ha guardado el Usuario '+usuario.nombreUsuario,'Registro Exitoso!')
+      this.loading = false;
+      this.toastr.success('Se ha guardado el Usuario ' + usuario.nombreUsuario, 'Registro Exitoso!')
 
-    },error => {
+    }, error => {
       this.toastr.error(error.error, 'Error!');
-      this.loading=false;
+      this.loading = false;
     })
 
   }
