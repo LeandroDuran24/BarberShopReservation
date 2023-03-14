@@ -1,0 +1,175 @@
+<div class="container">
+
+    <h3 class=" header text-center">Mantenimiento de Clientes</h3>
+    <div class="form-wrap">
+        <form id="survey-form" [formGroup]="registroCliente">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input type="text" formControlName="nombre" placeholder="Enter your First name"
+                            class="form-control">
+
+                        <span class="text-danger"
+                            *ngIf="registroCliente.get('nombre')?.hasError('required') && registroCliente.get('nombre')?.touched">Nombre
+                            es
+                            requerido</span>
+
+                        <span class="text-danger" *ngIf="registroCliente.get('nombre')?.hasError('pattern')">Solo
+                            letras</span>
+                    </div>
+                </div>
+
+
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Apellidos</label>
+                        <input type="text" formControlName="apellidos" placeholder="Enter your Last name"
+                            class="form-control">
+                        <span class="text-danger"
+                            *ngIf="registroCliente.get('apellidos')?.hasError('required') && registroCliente.get('apellidos')?.touched">Nombre
+                            es
+                            requerido</span>
+
+
+                        <span class="text-danger" *ngIf="registroCliente.get('apellidos')?.hasError('pattern')">Solo
+                            letras</span>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div class="row">
+
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Tipo Identificacion</label>
+
+                        <select class="form-control" formControlName="tipoIdentificacion">
+                            <option [ngValue]="null" [selected]="true" disabled>Selecciona una opción</option>
+                            <option [value]="1">
+                                Cedula
+                            </option>
+                            <option [value]="2">
+                                Pasaporte
+                            </option>
+                        </select>
+
+                        <span class="text-danger"
+                            *ngIf="registroCliente.get('tipoIdentificacion')?.hasError('required') && registroCliente.get('tipoIdentificacion')?.touched">Tipo
+                            de identificacion
+                            es
+                            requerido</span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Identificacion</label>
+                        <input type="text" formControlName="identificacion" placeholder="Enter your Id"
+                            class="form-control">
+                        <span class="text-danger"
+                            *ngIf="registroCliente.get('identificacion')?.hasError('required') && registroCliente.get('identificacion')?.touched">Password
+                            es
+                            requerido</span>
+
+
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Provincia</label>
+                        <input type="text" formControlName="provincia" placeholder="Enter your Password"
+                            class="form-control">
+                        <span class="text-danger"
+                            *ngIf="registroCliente.get('provincia')?.hasError('required') && registroCliente.get('provincia')?.touched">Password
+                            es
+                            requerido</span>
+
+
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="row">
+
+
+
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label>Direccion</label>
+                        <input type="text" formControlName="direccion" placeholder="Enter your Address"
+                            class="form-control">
+                        <span class="text-danger"
+                            *ngIf="registroCliente.get('direccion')?.hasError('required') && registroCliente.get('direccion')?.touched">Password
+                            es
+                            requerido</span>
+
+
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="row">
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Celular</label>
+                        <input type="text" formControlName="celular" placeholder="Enter your Phone"
+                            class="form-control">
+
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Fecha Nacimiento</label>
+
+                        <div class="input-group">
+                            <input class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker
+                                #d="ngbDatepicker" />
+                            <button class="btn btn-outline-secondary bi bi-calendar3" (click)="d.toggle()"
+                                type="button"></button>
+                        </div>
+                        <span class="text-danger"
+                            *ngIf="registroCliente.get('fechaNacimiento')?.hasError('required') && registroCliente.get('fechaNacimiento')?.touched">Fecha
+                            de nacimiento es
+                            requerido</span>
+
+
+                    </div>
+                </div>
+
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" ngModel [email]="true" formControlName="email"
+                            placeholder="Enter your Email" class="form-control">
+
+                    </div>
+                </div>
+
+
+
+            </div>
+
+
+            <div class="row">
+                <div class=" text-center ">
+                    <button type="submit" class="btn btn-primary"><span>Aceptar</span></button>
+                    <button type="button" class="btn btn-secondary"><span>Cancelar</span></button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

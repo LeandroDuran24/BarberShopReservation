@@ -6,17 +6,35 @@ import { RegistrarUsuarioComponent } from './components/usuario/registrar-usuari
 import { ConsultaUsuarioComponent } from './components/usuario/consulta-usuario/consulta-usuario.component';
 import { DashboardComponent } from './components/inicio/dashboard/dashboard.component';
 import { EditarUsuarioComponent } from './components/usuario/editar-usuario/editar-usuario.component';
+import { UsuarioComponent } from './components/usuario/usuario/usuario.component';
+import { ClienteComponent } from './components/cliente/cliente.component';
+import { RegistrarClienteComponent } from './components/cliente/registrar-cliente/registrar-cliente.component';
+import { ConsultaClienteComponent } from './components/cliente/consulta-cliente/consulta-cliente.component';
+import { EditarClienteComponent } from './components/cliente/editar-cliente/editar-cliente.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: InicioSesionComponent },
   {
     path: 'inicio', component: InicioComponent, children: [
-
-      { path: 'dashboard', component: DashboardComponent },
+      { path: '', component: DashboardComponent },
+    ]
+  },
+  {
+    path: 'usuario', component: UsuarioComponent, children: [
+      { path: '', component: InicioComponent },
       { path: 'mantenimientoUsuario', component: RegistrarUsuarioComponent },
       { path: 'consultaUsuario', component: ConsultaUsuarioComponent },
       { path: 'editarUsuario/:id', component: EditarUsuarioComponent },
+
+    ]
+  },
+  {
+    path: 'cliente', component: ClienteComponent, children: [
+      { path: '', component: InicioComponent },
+      { path: 'mantenimientoCliente', component: RegistrarClienteComponent },
+      { path: 'consultaCliente', component: ConsultaClienteComponent },
+      { path: 'editarCliente/:id', component: EditarClienteComponent },
 
     ]
   },

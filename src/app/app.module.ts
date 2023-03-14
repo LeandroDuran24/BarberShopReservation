@@ -21,6 +21,11 @@ import { LoadingComponent } from './components/shared/loading/loading.component'
 import { ConsultaUsuarioComponent } from './components/usuario/consulta-usuario/consulta-usuario.component';
 import { DashboardComponent } from './components/inicio/dashboard/dashboard.component';
 import { EditarUsuarioComponent } from './components/usuario/editar-usuario/editar-usuario.component';
+import { UsuarioComponent } from './components/usuario/usuario/usuario.component';
+import { ClienteComponent } from './components/cliente/cliente.component';
+import { RegistrarClienteComponent } from './components/cliente/registrar-cliente/registrar-cliente.component';
+import { ConsultaClienteComponent } from './components/cliente/consulta-cliente/consulta-cliente.component';
+import { EditarClienteComponent } from './components/cliente/editar-cliente/editar-cliente.component';
 
 
 
@@ -34,7 +39,12 @@ import { EditarUsuarioComponent } from './components/usuario/editar-usuario/edit
     LoadingComponent,
     ConsultaUsuarioComponent,
     DashboardComponent,
-    EditarUsuarioComponent
+    EditarUsuarioComponent,
+    UsuarioComponent,
+    ClienteComponent,
+    RegistrarClienteComponent,
+    ConsultaClienteComponent,
+    EditarClienteComponent
   ],
   imports: [
     BrowserModule,
