@@ -28,7 +28,7 @@
                         <input type="text" formControlName="apellidos" placeholder="Enter your Last name"
                             class="form-control">
                         <span class="text-danger"
-                            *ngIf="registroCliente.get('apellidos')?.hasError('required') && registroCliente.get('apellidos')?.touched">Nombre
+                            *ngIf="registroCliente.get('apellidos')?.hasError('required') && registroCliente.get('apellidos')?.touched">Apellidos
                             es
                             requerido</span>
 
@@ -73,9 +73,9 @@
                         <input type="text" formControlName="identificacion" placeholder="Enter your Id"
                             class="form-control">
                         <span class="text-danger"
-                            *ngIf="registroCliente.get('identificacion')?.hasError('required') && registroCliente.get('identificacion')?.touched">Password
+                            *ngIf="registroCliente.get('identificacion')?.hasError('required') && registroCliente.get('identificacion')?.touched">Identificacion
                             es
-                            requerido</span>
+                            requerida</span>
 
 
                     </div>
