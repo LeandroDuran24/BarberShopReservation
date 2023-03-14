@@ -22,11 +22,11 @@ export class RegistrarClienteComponent implements OnInit {
     this.registroCliente = this.fb.group({
       nombre: ['', [Validators.required, Validators.pattern('[a-zA-Z ]*')]],
       apellidos: ['', [Validators.required, Validators.pattern('[a-zA-Z ]*')]],
-      tipoIdentificacion: ['', [Validators.required, Validators.pattern('[a-zA-Z ]*')]],
-      identificacion: ['', [Validators.required, Validators.pattern('[a-zA-Z ]*')]],
-      direccion: ['', [Validators.required, Validators.pattern('[a-zA-Z ]*')]],
+      tipoIdentificacion: ['', Validators.required],
+      identificacion: ['', Validators.required],
+      direccion: ['', Validators.required],
       provincia: ['', [Validators.required, Validators.pattern('[a-zA-Z ]*')]],
-      celular: ['', [Validators.required, Validators.pattern('[a-zA-Z ]*')]],
+      celular: ['', [Validators.pattern('[0-9 ]*')]],
       fechaNacimiento: ['', [Validators.required, Validators.pattern('[a-zA-Z ]*')]],
       email: ['', [Validators.required, Validators.pattern('[a-zA-Z ]*')]]
 
