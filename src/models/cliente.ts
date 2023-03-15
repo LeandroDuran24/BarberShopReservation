@@ -5,11 +5,14 @@ nombre:string;
 apellidos:string;
 tipoIdentificacion:string;
 identificacion:string;
+sexo:string;
 direccion:string;
 provincia:string;
 celular:string;
-fechaNacimiento:Date;
 email:string;
+fechaNacimiento:Date;
+activo:number;
+usuarioId:number;
 
 constructor() {
   this.id=0;
@@ -22,6 +25,9 @@ constructor() {
   this.celular='';
   this.fechaNacimiento=new Date();
   this.email='';
+  this.sexo='';
+  this.activo=0;
+  this.usuarioId=0;
     
 }
 

@@ -27,5 +27,26 @@ export class ClienteService {
 
     }
 
+
+    getClientes():Observable<any>
+    {
+      return this.http.get(this.myAppUrl+this.myApiUrl);
+    }
+
+    getCliente(idCliente:number):Observable<any>{
+
+      return this.http.get(this.myAppUrl+this.myApiUrl+idCliente);
+    }
+
+    eliminarCliente(idCliente:number):Observable<any>
+    {
+      return this.http.delete(this.myAppUrl+this.myApiUrl+idCliente);
+    }
+
+    editarCliente(cliente:Clientes):Observable<any>
+    {
+      return this.http.put(this.myAppUrl+this.myApiUrl,cliente);
+    }
+
   }
 
