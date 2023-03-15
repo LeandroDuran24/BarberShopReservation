@@ -2,7 +2,7 @@
 
     <h3 class=" header text-center">Mantenimiento de Clientes</h3>
     <div class="form-wrap">
-        <form id="survey-form" [formGroup]="registroCliente">
+        <form id="survey-form" [formGroup]="registroCliente" (ngSubmit)="guardarCliente()">
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
@@ -32,7 +32,6 @@
                             es
                             requerido</span>
 
-
                         <span class="text-danger" *ngIf="registroCliente.get('apellidos')?.hasError('pattern')">Solo
                             letras</span>
                     </div>
@@ -52,10 +51,10 @@
 
                         <select class="form-control" formControlName="tipoIdentificacion">
                             <option value="null" [selected]="true" disabled>Selecciona una opción</option>
-                            <option value="1">
+                            <option value="CED">
                                 Cedula
                             </option>
-                            <option value="2">
+                            <option value="PAS">
                                 Pasaporte
                             </option>
                         </select>
@@ -100,9 +99,7 @@
 
             <div class="row">
 
-
-
-                <div class="col-md-12">
+                <div class="col-md-9">
                     <div class="form-group">
                         <label>Direccion</label>
                         <input type="text" formControlName="direccion" placeholder="Enter your Address"
@@ -115,6 +112,27 @@
 
                     </div>
                 </div>
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Sexo</label>
+                        <select class="form-control" formControlName="sexo">
+                            <option value="null" [selected]="true" disabled>Seleccione...</option>
+                            <option value="M">
+                                Masculino
+                            </option>
+                            <option value="F">
+                                Femenina
+                            </option>
+                        </select>
+                        <span class="text-danger"
+                            *ngIf="registroCliente.get('sexo')?.hasError('required') && registroCliente.get('sexo')?.touched">Sexo
+                            es
+                            requerido</span>
+                    </div>
+                </div>
+
+               
 
             </div>
 
@@ -136,8 +154,8 @@
                         <label>Fecha Nacimiento</label>
 
                         <div class="input-group">
-                            <input class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker
-                                #d="ngbDatepicker" />
+                            <input class="form-control" formControlName="fechaNacimiento" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker
+                                #d="ngbDatepicker" (dateSelect) = "onSelect($event)" />
                             <button class="btn btn-outline-secondary bi bi-calendar3" (click)="d.toggle()"
                                 type="button"></button>
                         </div>
@@ -155,6 +173,10 @@
                     <div class="form-group">
                         <label>Email</label>
                         <input type="email" formControlName="email" placeholder="Enter your Email" class="form-control">
+                        <span class="text-danger"
+                        *ngIf="registroCliente.get('email')?.hasError('required') && registroCliente.get('email')?.touched">Email
+                         es
+                        requerido</span>
 
                     </div>
                 </div>
@@ -166,8 +188,8 @@
 
             <div class="row">
                 <div class=" text-center ">
-                    <button type="submit" class="btn btn-primary"><span>Aceptar</span></button>
-                    <button type="button" class="btn btn-secondary"><span>Cancelar</span></button>
+                    <button type="submit" class="btn btn-primary" [disabled]="this.registroCliente.invalid" ><span>Aceptar</span></button>
+                    <button type="button" class="btn btn-secondary" (click)="reset()"><span>Cancelar</span></button>
                 </div>
             </div>
         </form>

@@ -19,21 +19,27 @@
                     <th>#</th>
                     <th scope="col">Nombre</th>
                     <th scope="col">Apellidos</th>
-                    <th scope="col">Usuario</th>
-                    <th scope="col">Fecha Creacion</th>
+                    <th scope="col">Identificacion</th>
+                    <th scope="col">Direccion</th>
+                    <th scope="col">Celular</th>
+                    <th scope="col">Email</th>
                     <th scope="col">Actions</th>
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let usuario of listCliente; let i = index">
+                <tr *ngFor="let cliente of listCliente; let i = index">
                     <td>{{i+1}}</td>
-                    <td>{{usuario.nombre}}</td>
-                    <td>{{usuario.apellidos}}</td>
-                    <td>{{usuario.nombreUsuario}}</td>
-                    <td>{{usuario.fechaCreacion | date:'dd/MM/yyyy'}}</td>
+                    <td>{{cliente.nombre}}</td>
+                    <td>{{cliente.apellidos}}</td>
+                    <td>{{cliente.identificacion}}</td>
+                    <td>{{cliente.direccion}}</td>
+                    <td>{{cliente.celular}}</td>
+                    <td>{{cliente.email}}</td>
+                
+                        
                     <td>
                         <button type="button" class="btn"><i class="bi bi-pencil-square" style="color: blue;"
-                                routerLink="/usuario/editarUsuario/{{usuario.id}}"></i></button>
+                                routerLink="/usuario/editarUsuario/{{cliente.id}}"></i></button>
                         <button class="btn"><i class="bi bi-trash3-fill" style="color: red;"
                                 ></i></button>
 

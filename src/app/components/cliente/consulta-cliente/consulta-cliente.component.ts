@@ -30,11 +30,17 @@ export class ConsultaClienteComponent {
       responsive: true
     };
    
-
+this.getListClientes();
   }
 
   getListClientes(): void {
 
+    this.clienteServicio.getClientes().subscribe(data => {
+      this.listCliente = data;
+     
+    }, error => {
+      this.toast.error(error.error, 'Error!');
+    })
    
 
   }

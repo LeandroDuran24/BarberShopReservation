@@ -11,7 +11,7 @@ provincia:string;
 celular:string;
 email:string;
 fechaNacimiento:Date;
-activo:number;
+activo?:number;
 usuarioId:number;
 
 constructor() {
