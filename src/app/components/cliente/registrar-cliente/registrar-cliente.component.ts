@@ -44,7 +44,7 @@ export class RegistrarClienteComponent implements OnInit {
 
   reset():any{
 
-    console.log(this.registroCliente)
+    this.registroCliente.reset()
   }
 
   onSelect(evt:any){
@@ -70,7 +70,7 @@ export class RegistrarClienteComponent implements OnInit {
       
     }
 
-console.log(cliente.fechaNacimiento);
+
     this.loading=true;
 
     this.clienteService.guardarCliente(cliente).subscribe(data=>{

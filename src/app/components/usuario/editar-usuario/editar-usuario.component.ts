@@ -13,10 +13,6 @@ import { Usuario } from 'src/models/usuario';
 export class EditarUsuarioComponent implements OnInit {
 
   idUsuario: number = 0;
-  nombre: string = '';
-  apellidos: string = '';
-  usuario: string = '';
-  password: string = '';
   editarUsuario: FormGroup;
   loading = false;
 
@@ -25,7 +21,7 @@ export class EditarUsuarioComponent implements OnInit {
 
 
     this.editarUsuario = this.fb.group({
-      nombre: [this.nombre, [Validators.pattern('[a-zA-Z ]*')]],
+      nombre: ['', [Validators.pattern('[a-zA-Z ]*')]],
       apellidos: ['', [Validators.pattern('[a-zA-Z ]*')]],
       nombreUsuario: [''],
       password: ['', [Validators.minLength(4)]],
@@ -50,10 +46,14 @@ export class EditarUsuarioComponent implements OnInit {
 
   getUsuario(): void {
     this.usuarioService.getUsuario(this.idUsuario).subscribe(data => {
-      this.nombre = data.nombre;
-      this.apellidos = data.apellidos;
-      this.usuario = data.nombreUsuario;
-      this.password = data.password;
+    
+      this.editarUsuario.setValue({
+        nombre: data.nombre,
+        apellidos: data.apellidos,
+        usuario: data.nombreUsuario,
+        password:  data.password
+  
+      });
 
 
     }, error => {

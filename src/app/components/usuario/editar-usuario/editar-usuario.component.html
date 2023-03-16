@@ -7,7 +7,7 @@
                 <div class="col-md-8">
                     <div class="form-group">
                         <label>Name</label>
-                        <input type="text" formControlName="nombre" [value]="nombre" placeholder="Enter your First name"
+                        <input type="text" formControlName="nombre"  placeholder="Enter your First name"
                             class="form-control">
 
                         <span class="text-danger" *ngIf="editarUsuario.get('nombre')?.hasError('required') ">Nombre
@@ -25,7 +25,7 @@
                 <div class="col-md-8">
                     <div class="form-group">
                         <label>Apellidos</label>
-                        <input type="text" formControlName="apellidos" [value]="apellidos"
+                        <input type="text" formControlName="apellidos" 
                             placeholder="Enter your Last name" class="form-control">
                         <span class="text-danger" *ngIf="editarUsuario.get('apellidos')?.hasError('required') ">Nombre
                             es
@@ -42,7 +42,7 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         <label>Usuario</label>
-                        <input type="text" formControlName="nombreUsuario" [value]="usuario"
+                        <input type="text" formControlName="nombreUsuario" 
                             placeholder="Enter your User" class="form-control">
 
                         <span class="text-danger"
@@ -54,7 +54,7 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         <label>Password</label>
-                        <input type="password" formControlName="password" [value]="password" placeholder=" Enter your
+                        <input type="password" formControlName="password"  placeholder=" Enter your
                             Password" class="form-control">
                         <span class="text-danger" *ngIf="editarUsuario.get('password')?.hasError('required') ">Password
                             es
@@ -68,7 +68,7 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         <label>Confirmar</label>
-                        <input type="password" formControlName="confirmar" [value]="password"
+                        <input type="password" formControlName="confirmar" 
                             placeholder="Enter your Password" class="form-control">
                         <span class="text-danger" *ngIf="editarUsuario.hasError('notSame')">
                             Contraseñas no coinciden

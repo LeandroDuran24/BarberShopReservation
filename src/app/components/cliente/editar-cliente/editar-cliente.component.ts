@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { formatDate } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ClienteService } from 'src/app/services/cliente.service';
 import { Clientes } from 'src/models/cliente';
+import { NgbDate } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-editar-cliente',
@@ -13,16 +15,6 @@ import { Clientes } from 'src/models/cliente';
 export class EditarClienteComponent implements OnInit {
 
   idCliente: number = 0;
-  nombre: string = '';
-  apellidos: string = '';
-  tipoIdentificacion: string = '';
-  identificacion: string = '';
-  direccion: string = '';
-  provincia: string = '';
-  sexo: string = '';
-  celular: string = '';
-  email: string = '';
-  fechaNacimiento: Date = new Date();
   registroCliente: FormGroup;
   selectedDate: Date = new Date();
   loading = false;
@@ -42,7 +34,7 @@ export class EditarClienteComponent implements OnInit {
       direccion: [''],
       provincia: ['', [Validators.pattern('[a-zA-Z ]*')]],
       celular: ['', [Validators.pattern('[0-9 ]*')]],
-      fechaNacimiento: [''],
+      fechaNacimiento: '',
       email: ['']
 
 
@@ -55,9 +47,11 @@ export class EditarClienteComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCliente();
+
   }
 
   onSelect(evt: any) {
+    
     this.selectedDate = new Date(evt.year, evt.month - 1, evt.day);
     console.log(this.selectedDate.toISOString());
   }
@@ -69,33 +63,23 @@ export class EditarClienteComponent implements OnInit {
   getCliente(): void {
     this.clienteService.getCliente(this.idCliente).subscribe(data => {
 
-      this.nombre = data.nombre;
-      this.apellidos = data.apellidos;
-      this.tipoIdentificacion = data.tipoIdentificacion;
-      this.identificacion = data.identificacion;
-      this.sexo = data.sexo;
-      this.direccion = data.direccion;
-      this.provincia = data.provincia;
-      this.celular = data.celular;
-      this.email = data.email;
-      this.fechaNacimiento = data.fechaNacimiento;
-
-
+      let fechaNac = new Date(data.fechaNacimiento);
+    
       //seteo los valores iniciales
       this.registroCliente.setValue({
-        nombre: this.nombre,
-        apellidos: this.apellidos,
-        tipoIdentificacion: this.tipoIdentificacion,
-        identificacion: this.identificacion,
-        sexo: this.sexo,
-        direccion: this.direccion,
-        provincia: this.provincia,
-        celular: this.celular,
-        fechaNacimiento: this.fechaNacimiento,
-        email: this.email,
+        nombre: data.nombre,
+        apellidos: data.apellidos,
+        tipoIdentificacion: data.tipoIdentificacion,
+        identificacion: data.identificacion,
+        sexo: data.sexo,
+        direccion: data.direccion,
+        provincia: data.provincia,
+        celular: data.celular,
+        fechaNacimiento: {year: fechaNac.getFullYear(), month: fechaNac.getMonth() + 1, day: fechaNac.getDate()},
+        email: data.email,
 
-      })
-
+      });
+      
 
     }, error => {
 
@@ -135,7 +119,6 @@ export class EditarClienteComponent implements OnInit {
     }, error => {
 
       this.toast.error(error.error, 'Error!');
-      console.log(error);
 
     })
   }

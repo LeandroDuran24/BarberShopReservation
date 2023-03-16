@@ -11,6 +11,10 @@ import { ClienteComponent } from './components/cliente/cliente.component';
 import { RegistrarClienteComponent } from './components/cliente/registrar-cliente/registrar-cliente.component';
 import { ConsultaClienteComponent } from './components/cliente/consulta-cliente/consulta-cliente.component';
 import { EditarClienteComponent } from './components/cliente/editar-cliente/editar-cliente.component';
+import { EstilistaComponent } from './components/estilista/estilista.component';
+import { RegistrarEstilistaComponent } from './components/estilista/registrar-estilista/registrar-estilista.component';
+import { ConsultaEstilistaComponent } from './components/estilista/consulta-estilista/consulta-estilista.component';
+import { EditarEstilistaComponent } from './components/estilista/editar-estilista/editar-estilista.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -35,6 +39,15 @@ const routes: Routes = [
       { path: 'mantenimientoCliente', component: RegistrarClienteComponent },
       { path: 'consultaCliente', component: ConsultaClienteComponent },
       { path: 'editarCliente/:id', component: EditarClienteComponent },
+
+    ]
+  },
+  {
+    path: 'estilista', component: EstilistaComponent, children: [
+      { path: '', component: InicioComponent },
+      { path: 'mantenimientoEstilista', component: RegistrarEstilistaComponent },
+      { path: 'consultaEstilista', component: ConsultaEstilistaComponent },
+      { path: 'editarEstilista/:id', component: EditarEstilistaComponent },
 
     ]
   },

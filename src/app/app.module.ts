@@ -26,6 +26,10 @@ import { ClienteComponent } from './components/cliente/cliente.component';
 import { RegistrarClienteComponent } from './components/cliente/registrar-cliente/registrar-cliente.component';
 import { ConsultaClienteComponent } from './components/cliente/consulta-cliente/consulta-cliente.component';
 import { EditarClienteComponent } from './components/cliente/editar-cliente/editar-cliente.component';
+import { EstilistaComponent } from './components/estilista/estilista.component';
+import { RegistrarEstilistaComponent } from './components/estilista/registrar-estilista/registrar-estilista.component';
+import { ConsultaEstilistaComponent } from './components/estilista/consulta-estilista/consulta-estilista.component';
+import { EditarEstilistaComponent } from './components/estilista/editar-estilista/editar-estilista.component';
 
 
 
@@ -44,7 +48,11 @@ import { EditarClienteComponent } from './components/cliente/editar-cliente/edit
     ClienteComponent,
     RegistrarClienteComponent,
     ConsultaClienteComponent,
-    EditarClienteComponent
+    EditarClienteComponent,
+    EstilistaComponent,
+    RegistrarEstilistaComponent,
+    ConsultaEstilistaComponent,
+    EditarEstilistaComponent
   ],
   imports: [
     BrowserModule,
