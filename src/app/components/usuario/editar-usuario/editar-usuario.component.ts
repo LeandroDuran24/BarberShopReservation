@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { UsuarioService } from 'src/app/services/usuario.service';
+import { Usuario } from 'src/models/usuario';
 
 @Component({
   selector: 'app-editar-usuario',
@@ -17,17 +18,18 @@ export class EditarUsuarioComponent implements OnInit {
   usuario: string = '';
   password: string = '';
   editarUsuario: FormGroup;
+  loading = false;
 
   constructor(private activatedRouter: ActivatedRoute, private fb: FormBuilder, private toastr: ToastrService, private usuarioService: UsuarioService) {
     this.idUsuario = Number(this.activatedRouter.snapshot.paramMap.get('id'));
 
 
     this.editarUsuario = this.fb.group({
-      nombre: [this.nombre, [Validators.required, Validators.pattern('[a-zA-Z ]*')]],
-      apellidos: ['', [Validators.required, Validators.pattern('[a-zA-Z ]*')]],
-      nombreUsuario: ['', Validators.required],
-      password: ['', [Validators.required, Validators.minLength(4)]],
-      confirmar: ['', Validators.required]
+      nombre: [this.nombre, [Validators.pattern('[a-zA-Z ]*')]],
+      apellidos: ['', [Validators.pattern('[a-zA-Z ]*')]],
+      nombreUsuario: [''],
+      password: ['', [Validators.minLength(4)]],
+      confirmar: ['']
 
 
     }, { validator: this.checkPassword })
@@ -48,7 +50,6 @@ export class EditarUsuarioComponent implements OnInit {
 
   getUsuario(): void {
     this.usuarioService.getUsuario(this.idUsuario).subscribe(data => {
-      this.editarUsuario.value.nombre = data.nombre;
       this.nombre = data.nombre;
       this.apellidos = data.apellidos;
       this.usuario = data.nombreUsuario;
@@ -57,9 +58,40 @@ export class EditarUsuarioComponent implements OnInit {
 
     }, error => {
 
-      console.log(error);
       this.toastr.error(error.error, 'Error!');
     })
+
+  }
+
+
+  reset(): any {
+    this.editarUsuario.reset();
+  }
+
+  /*Save Usuario */
+  guardarUsuario(): void {
+
+    const usuario: Usuario = {
+      id: this.idUsuario,
+      nombre: this.editarUsuario.value.nombre,
+      apellidos: this.editarUsuario.value.apellidos,
+      nombreUsuario: this.editarUsuario.value.nombreUsuario,
+      password: this.editarUsuario.value.password
+
+    }
+
+    this.loading = true;
+    this.usuarioService.editarUsuario(usuario).subscribe(data => {
+
+      this.reset();
+      this.loading = false;
+      this.toastr.success('Se ha editado el Usuario ' + usuario.nombreUsuario, 'Registro Exitoso!')
+
+    }, error => {
+      this.toastr.error(error.error, 'Error!');
+      this.loading = false;
+    })
+
 
   }
 }

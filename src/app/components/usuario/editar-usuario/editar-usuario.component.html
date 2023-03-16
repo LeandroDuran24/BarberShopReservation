@@ -1,8 +1,8 @@
 <div class="container">
 
-    <h3 class=" header text-center">Mantenimiento de Usuarios</h3>
+    <h3 class=" header text-center">Editar Usuario</h3>
     <div class="form-wrap">
-        <form id="survey-form" [formGroup]="editarUsuario">
+        <form id="survey-form" [formGroup]="editarUsuario" (ngSubmit)="guardarUsuario()">
             <div class="row">
                 <div class="col-md-8">
                     <div class="form-group">
@@ -10,8 +10,7 @@
                         <input type="text" formControlName="nombre" [value]="nombre" placeholder="Enter your First name"
                             class="form-control">
 
-                        <span class="text-danger"
-                            *ngIf="editarUsuario.get('nombre')?.hasError('required') && editarUsuario.get('nombre')?.touched">Nombre
+                        <span class="text-danger" *ngIf="editarUsuario.get('nombre')?.hasError('required') ">Nombre
                             es
                             requerido</span>
 
@@ -28,8 +27,7 @@
                         <label>Apellidos</label>
                         <input type="text" formControlName="apellidos" [value]="apellidos"
                             placeholder="Enter your Last name" class="form-control">
-                        <span class="text-danger"
-                            *ngIf="editarUsuario.get('apellidos')?.hasError('required') && editarUsuario.get('apellidos')?.touched">Nombre
+                        <span class="text-danger" *ngIf="editarUsuario.get('apellidos')?.hasError('required') ">Nombre
                             es
                             requerido</span>
 
@@ -48,7 +46,7 @@
                             placeholder="Enter your User" class="form-control">
 
                         <span class="text-danger"
-                            *ngIf="editarUsuario.get('nombreUsuario')?.hasError('required') && editarUsuario.get('nombreUsuario')?.touched">Nombre
+                            *ngIf="editarUsuario.get('nombreUsuario')?.hasError('required') ">Nombre
                             es
                             requerido</span>
                     </div>
@@ -58,13 +56,11 @@
                         <label>Password</label>
                         <input type="password" formControlName="password" [value]="password" placeholder=" Enter your
                             Password" class="form-control">
-                        <span class="text-danger"
-                            *ngIf="editarUsuario.get('password')?.hasError('required') && editarUsuario.get('password')?.touched">Password
+                        <span class="text-danger" *ngIf="editarUsuario.get('password')?.hasError('required') ">Password
                             es
                             requerido</span>
 
-                        <span class="text-danger "
-                            *ngIf="editarUsuario.get('password')?.hasError('minlength') && editarUsuario.get('password')?.touched">
+                        <span class="text-danger " *ngIf="editarUsuario.get('password')?.hasError('minlength') ">
                             La contraseña debe tener minimo 4 digitos
                         </span>
                     </div>
@@ -86,7 +82,7 @@
                 <div class=" text-center ">
                     <button type="submit" class="btn btn-primary"
                         [disabled]="this.editarUsuario.invalid"><span>Aceptar</span></button>
-                    <button class="btn btn-secondary"><span>Cancelar</span></button>
+                    <button class="btn btn-secondary" (click)="reset()"><span>Cancelar</span></button>
                 </div>
             </div>
         </form>
