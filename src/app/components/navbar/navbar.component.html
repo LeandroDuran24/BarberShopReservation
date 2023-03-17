@@ -95,71 +95,36 @@
         </div>
         <!--CAROUSEL-->
         <div class="col" style="padding: 0; margin: 0;">
-           
+
 
             <nav class="navbar navbar-expand-md navbar-dark bg-primary">
                 <div class="container-fluid">
-                  <a class="navbar-brand fw-bold" ></a>
-                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                  </button>
-                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-                      <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" ></a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" ></a>
-                      </li>
-                      <li class="nav-item dropdown">
-                      <!--  <a class="nav-link dropdown-toggle"  id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                         
-                        </a>-->
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                          <li><a class="dropdown-item" ></a></li>
-                          <li><a class="dropdown-item" > </a></li>
-                          <li>
-                            <hr class="dropdown-divider">
-                          </li>
-                          <li><a class="dropdown-item" ></a></li>
+                 
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+  
+                        <ul class="navbar-nav sm-icons">
+
+                            <div ngbDropdown class="d-inline-block">
+                                <button type="button" class="btn " id="dropdownBasic1" ngbDropdownToggle>
+                                    <i class="bi bi-person-circle"></i>
+                                </button>
+                                <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                                    <button ngbDropdownItem>Action - 1</button>
+                                    <button ngbDropdownItem>Another Action</button>
+                                    <button ngbDropdownItem>Something else is here</button>
+                                </div>
+                            </div>
+
                         </ul>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link"></a>
-                      </li>
-                    </ul>
-                    <ul class="navbar-nav sm-icons">
-                     
-                      -<!--<li><a class="nav-link" ><i class="bi bi-person-circle"></i></a></li>-->
-
-
-                      <div ngbDropdown class="d-inline-block">
-                        <button type="button" class="btn " id="dropdownBasic1" ngbDropdownToggle>
-                            <i class="bi bi-person-circle"></i>
-                        </button>
-                        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                            <button ngbDropdownItem>Action - 1</button>
-                            <button ngbDropdownItem>Another Action</button>
-                            <button ngbDropdownItem>Something else is here</button>
-                        </div>
                     </div>
-
-                    </ul>
-
-
-
-                   
-
-
-
-                  </div>
                 </div>
-              </nav>
+            </nav>
 
-              <div class="mt-5">
+            <div class="mt-5">
                 <router-outlet></router-outlet>
-              </div>
-           
+            </div>
+
 
             <!--
             <ngb-carousel>
