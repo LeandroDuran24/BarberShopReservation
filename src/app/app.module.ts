@@ -30,6 +30,7 @@ import { EstilistaComponent } from './components/estilista/estilista.component';
 import { RegistrarEstilistaComponent } from './components/estilista/registrar-estilista/registrar-estilista.component';
 import { ConsultaEstilistaComponent } from './components/estilista/consulta-estilista/consulta-estilista.component';
 import { EditarEstilistaComponent } from './components/estilista/editar-estilista/editar-estilista.component';
+import { ServicioComponent } from './components/servicio/servicio.component';
 
 
 
@@ -52,7 +53,8 @@ import { EditarEstilistaComponent } from './components/estilista/editar-estilist
     EstilistaComponent,
     RegistrarEstilistaComponent,
     ConsultaEstilistaComponent,
-    EditarEstilistaComponent
+    EditarEstilistaComponent,
+    ServicioComponent
   ],
   imports: [
     BrowserModule,
