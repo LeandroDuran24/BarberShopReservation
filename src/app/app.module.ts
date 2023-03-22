@@ -31,6 +31,9 @@ import { RegistrarEstilistaComponent } from './components/estilista/registrar-es
 import { ConsultaEstilistaComponent } from './components/estilista/consulta-estilista/consulta-estilista.component';
 import { EditarEstilistaComponent } from './components/estilista/editar-estilista/editar-estilista.component';
 import { ServicioComponent } from './components/servicio/servicio.component';
+import { RegistroServicioComponent } from './components/servicio/registro-servicio/registro-servicio.component';
+import { ConsultaServicioComponent } from './components/servicio/consulta-servicio/consulta-servicio.component';
+import { EditarServicioComponent } from './components/servicio/editar-servicio/editar-servicio.component';
 
 
 
@@ -54,7 +57,10 @@ import { ServicioComponent } from './components/servicio/servicio.component';
     RegistrarEstilistaComponent,
     ConsultaEstilistaComponent,
     EditarEstilistaComponent,
-    ServicioComponent
+    ServicioComponent,
+    RegistroServicioComponent,
+    ConsultaServicioComponent,
+    EditarServicioComponent
   ],
   imports: [
     BrowserModule,
