@@ -1,1 +1,74 @@
-<p>consulta-servicio works!</p>
+<div class="container">
+    <div class="table-wrapper">
+        <div class="table-title">
+            <div class="row">
+                <div class="col-sm-10">
+                    <h2 class="text-center">Listado de Servicios </h2>
+                </div>
+                <div class="col-sm-2">
+                    <button class="btn " routerLink="/servicio/mantenimientoServicio">
+                        <i class="bi bi-plus-circle"></i>Nuevo</button>
+                </div>
+            </div>
+        </div>
+        <table class=" table table-bordered table-striped table-hover" datatable [dtOptions]="dtOptions"
+            *ngIf="listServicio.length">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Precio</th>
+                    <th scope="col">Duracion</th>
+
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let servicio of listServicio; let i = index">
+                    <td>{{i+1}}</td>
+                    <td>{{servicio.nombre}}</td>
+                    <td>{{servicio.precio}}</td>
+                    <td>{{servicio.duracion}</td>
+
+
+
+                    <td>
+                        <button type="button" class="btn"><i class="bi bi-pencil-square" style="color: blue;"
+                                routerLink="/servicio/editarServicio/{{servicio.id}}"></i></button>
+                        <button class="btn"><i class="bi bi-trash3-fill" style="color: red;"
+                                (click)="eliminarServicio(servicio,content)"></i></button>
+
+                    </td>
+                </tr>
+
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<!--Modal ELiminar-->
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Eliminar Cliente</h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+        <form>
+            <div class="mb-3">
+                <label>Esta seguro que desea eliminiar el estilista <strong class="text-danger">
+                    </strong>
+                    {{nombreEstilista}}
+                    ?</label>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer" style="justify-content: center;">
+
+        <div class="form-group text-center ">
+            <button type="button" class="btn btn-primary" (click)="confirmarEliminacion()"><span>Aceptar</span></button>
+            <button class="btn btn-secondary" (click)="modal.close('Save click')"><span>Cancelar</span></button>
+        </div>
+    </div>
+</ng-template>

@@ -15,6 +15,10 @@ import { EstilistaComponent } from './components/estilista/estilista.component';
 import { RegistrarEstilistaComponent } from './components/estilista/registrar-estilista/registrar-estilista.component';
 import { ConsultaEstilistaComponent } from './components/estilista/consulta-estilista/consulta-estilista.component';
 import { EditarEstilistaComponent } from './components/estilista/editar-estilista/editar-estilista.component';
+import { ServicioComponent } from './components/servicio/servicio.component';
+import { RegistroServicioComponent } from './components/servicio/registro-servicio/registro-servicio.component';
+import { ConsultaServicioComponent } from './components/servicio/consulta-servicio/consulta-servicio.component';
+import { EditarServicioComponent } from './components/servicio/editar-servicio/editar-servicio.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -28,7 +32,7 @@ const routes: Routes = [
     path: 'usuario', component: UsuarioComponent, children: [
       { path: '', component: InicioComponent },
       { path: 'mantenimientoUsuario', component: RegistrarUsuarioComponent },
-      { path: 'consultaUsuario', component: ConsultaUsuarioComponent },
+      { path: 'consultaUsuarios', component: ConsultaUsuarioComponent },
       { path: 'editarUsuario/:id', component: EditarUsuarioComponent },
 
     ]
@@ -37,7 +41,7 @@ const routes: Routes = [
     path: 'cliente', component: ClienteComponent, children: [
       { path: '', component: InicioComponent },
       { path: 'mantenimientoCliente', component: RegistrarClienteComponent },
-      { path: 'consultaCliente', component: ConsultaClienteComponent },
+      { path: 'consultaClientes', component: ConsultaClienteComponent },
       { path: 'editarCliente/:id', component: EditarClienteComponent },
 
     ]
@@ -46,8 +50,18 @@ const routes: Routes = [
     path: 'estilista', component: EstilistaComponent, children: [
       { path: '', component: InicioComponent },
       { path: 'mantenimientoEstilista', component: RegistrarEstilistaComponent },
-      { path: 'consultaEstilista', component: ConsultaEstilistaComponent },
+      { path: 'consultaEstilistas', component: ConsultaEstilistaComponent },
       { path: 'editarEstilista/:id', component: EditarEstilistaComponent },
+
+    ]
+  },
+
+  {
+    path: 'servicio', component: ServicioComponent, children: [
+      { path: '', component: InicioComponent },
+      { path: 'mantenimientoServicio', component: RegistroServicioComponent },
+      { path: 'consultaServicios', component: ConsultaServicioComponent },
+      { path: 'editarServicio/:id', component: EditarServicioComponent },
 
     ]
   },
