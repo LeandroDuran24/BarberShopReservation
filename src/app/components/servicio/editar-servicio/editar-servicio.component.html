@@ -1,1 +1,78 @@
-<p>editar-servicio works!</p>
+<div class="container">
+
+    <h3 class=" header text-center">Editar Servicio</h3>
+    <div class="form-wrap">
+        <form id="survey-form" [formGroup]="registroServicio" (ngSubmit)="guardarServicio()">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input type="text" formControlName="nombre" placeholder="Enter your First name"
+                            class="form-control">
+
+                        <span class="text-danger"
+                            *ngIf="registroServicio.get('nombre')?.hasError('required') && registroServicio.get('nombre')?.touched">Nombre
+                            es
+                            requerido</span>
+
+                        <span class="text-danger" *ngIf="registroServicio.get('nombre')?.hasError('pattern')">Solo
+                            letras</span>
+                    </div>
+                </div>
+
+
+
+
+
+            </div>
+
+            <div class="row">
+
+            </div>
+
+
+            <div class="row">
+
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Precio</label>
+                        <input type="number" formControlName="precio" placeholder="Enter your Price"
+                            class="form-control">
+                        <span class="text-danger"
+                            *ngIf="registroServicio.get('precio')?.hasError('required') && registroServicio.get('precio')?.touched">Precio
+                            es
+                            requerido</span>
+
+                        <span class="text-danger" *ngIf="registroServicio.get('precio')?.hasError('pattern')">Solo
+                            numero</span>
+                    </div>
+                </div>
+
+
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Duracion</label>
+                        <input type="time" formControlName="duracion" placeholder="Enter your Time"
+                            class="form-control">
+                        <span class="text-danger" *ngIf="registroServicio.get('duracion')?.hasError('pattern')">Solo
+                            numeros</span>
+                    </div>
+                </div>
+
+
+
+            </div>
+
+
+            <div class="row">
+                <div class=" text-center ">
+                    <button type="submit" class="btn btn-primary"
+                        [disabled]="this.registroServicio.invalid"><span>Aceptar</span></button>
+                    <button type="button" class="btn btn-secondary" (click)="reset()"><span>Cancelar</span></button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

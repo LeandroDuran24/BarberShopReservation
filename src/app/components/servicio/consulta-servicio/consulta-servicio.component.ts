@@ -38,6 +38,7 @@ export class ConsultaServicioComponent {
       this.listServicio = data;
 
     }, error => {
+      console.log(error.error);
       this.toast.error(error.error, 'Error!');
     })
 

@@ -28,7 +28,7 @@
                     <td>{{i+1}}</td>
                     <td>{{servicio.nombre}}</td>
                     <td>{{servicio.precio}}</td>
-                    <td>{{servicio.duracion}</td>
+                    <td>{{servicio.duracion }}</td>
 
 
 
@@ -51,15 +51,15 @@
 <!--Modal ELiminar-->
 <ng-template #content let-modal>
     <div class="modal-header">
-        <h4 class="modal-title" id="modal-basic-title">Eliminar Cliente</h4>
+        <h4 class="modal-title" id="modal-basic-title">Eliminar Servicio</h4>
         <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
     </div>
     <div class="modal-body">
         <form>
             <div class="mb-3">
-                <label>Esta seguro que desea eliminiar el estilista <strong class="text-danger">
+                <label>Esta seguro que desea eliminiar el servicio <strong class="text-danger">
                     </strong>
-                    {{nombreEstilista}}
+                    {{nombreServicio}}
                     ?</label>
             </div>
         </form>
