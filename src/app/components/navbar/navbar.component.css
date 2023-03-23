@@ -63,6 +63,15 @@ ngb-carousel {
 
 
 
+/*Opciones Nav*/
+.dropdown-menu[data-bs-popper] {
+    top: 100%;
+    margin-top: var(--bs-dropdown-spacer);
+    margin-left: -100px !important;
+}
+
+
+
 /*NAV*/
 
 /*.navbar .navbar-nav .nav-link {
