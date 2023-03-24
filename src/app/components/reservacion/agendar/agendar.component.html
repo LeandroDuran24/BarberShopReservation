@@ -1,0 +1,95 @@
+<div class="container">
+
+    <h3 class="header text-center">Agendar Reservacion</h3>
+    <div class="form-wrap">
+        <form id="survey-form">
+
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label>Fecha de la Reserva</label>
+
+                        <div class="input-group">
+                            <input class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker
+                                #d="ngbDatepicker" />
+                            <button class="btn btn-outline-secondary bi bi-calendar3" (click)="d.toggle()"
+                                type="button"></button>
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input type="text" class="form-control">
+
+                    </div>
+                </div>
+
+
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Apellidos</label>
+                        <input type="text" class="form-control">
+
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Identificacion</label>
+                        <input type="text" class="form-control">
+
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Provincia</label>
+                        <input type="text" class="form-control">
+
+
+                    </div>
+                </div>
+
+
+            </div>
+
+
+            <div class="row">
+
+                <div class="col-md-9">
+                    <div class="form-group">
+                        <label>Direccion</label>
+                        <input type="text" class="form-control">
+
+
+                    </div>
+                </div>
+
+
+
+            </div>
+
+
+
+            <div class="row">
+                <div class=" text-center ">
+                    <button type="submit" class="btn btn-primary"><span>Aceptar</span></button>
+                    <button type="button" class="btn btn-secondary"><span>Cancelar</span></button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

@@ -34,6 +34,9 @@ import { ServicioComponent } from './components/servicio/servicio.component';
 import { RegistroServicioComponent } from './components/servicio/registro-servicio/registro-servicio.component';
 import { ConsultaServicioComponent } from './components/servicio/consulta-servicio/consulta-servicio.component';
 import { EditarServicioComponent } from './components/servicio/editar-servicio/editar-servicio.component';
+import { ReservacionComponent } from './components/reservacion/reservacion.component';
+import { AgendarComponent } from './components/reservacion/agendar/agendar.component';
+import { CambiarPasswordComponent } from './components/usuario/cambiar-password/cambiar-password.component';
 
 
 
@@ -60,7 +63,10 @@ import { EditarServicioComponent } from './components/servicio/editar-servicio/e
     ServicioComponent,
     RegistroServicioComponent,
     ConsultaServicioComponent,
-    EditarServicioComponent
+    EditarServicioComponent,
+    ReservacionComponent,
+    AgendarComponent,
+    CambiarPasswordComponent
   ],
   imports: [
     BrowserModule,

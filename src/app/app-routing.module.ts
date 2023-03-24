@@ -19,6 +19,9 @@ import { ServicioComponent } from './components/servicio/servicio.component';
 import { RegistroServicioComponent } from './components/servicio/registro-servicio/registro-servicio.component';
 import { ConsultaServicioComponent } from './components/servicio/consulta-servicio/consulta-servicio.component';
 import { EditarServicioComponent } from './components/servicio/editar-servicio/editar-servicio.component';
+import { ReservacionComponent } from './components/reservacion/reservacion.component';
+import { AgendarComponent } from './components/reservacion/agendar/agendar.component';
+import { CambiarPasswordComponent } from './components/usuario/cambiar-password/cambiar-password.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -33,6 +36,7 @@ const routes: Routes = [
       { path: '', component: InicioComponent },
       { path: 'mantenimientoUsuario', component: RegistrarUsuarioComponent },
       { path: 'consultaUsuarios', component: ConsultaUsuarioComponent },
+      { path: 'cambiarPassword', component: CambiarPasswordComponent },
       { path: 'editarUsuario/:id', component: EditarUsuarioComponent },
 
     ]
@@ -60,6 +64,15 @@ const routes: Routes = [
     path: 'servicio', component: ServicioComponent, children: [
       { path: '', component: InicioComponent },
       { path: 'mantenimientoServicio', component: RegistroServicioComponent },
+      { path: 'consultaServicios', component: ConsultaServicioComponent },
+      { path: 'editarServicio/:id', component: EditarServicioComponent },
+
+    ]
+  },
+  {
+    path: 'reservacion', component: ReservacionComponent, children: [
+      { path: '', component: InicioComponent },
+      { path: 'agendar', component: AgendarComponent },
       { path: 'consultaServicios', component: ConsultaServicioComponent },
       { path: 'editarServicio/:id', component: EditarServicioComponent },
 
