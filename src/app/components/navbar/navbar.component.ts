@@ -9,7 +9,8 @@ import { NgbAlert, NgbCarouselConfig, NgbCarouselModule } from '@ng-bootstrap/ng
 })
 export class NavbarComponent {
 
-
+  isCollapsedMantenimiento = false;
+  isCollapsedConsulta = false;
 
 
 

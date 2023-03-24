@@ -14,39 +14,88 @@
                         </a>
                     </li>
 
-                    <!--USUARIOS-->
+                    <!--Mantenimientos-->
                     <li class="nav-item">
-                        <a routerLink="/usuario/mantenimientoUsuario" class="nav-link align-middle px-0">
-                            <i class="fs-4 bi-person"></i> <span class="ms-1 d-none d-sm-inline">Usuarios</span>
+                        <a id="option" role="button" class="nav-link px-0 align-middle"
+                            (click)="isCollapsedMantenimiento= ! isCollapsedMantenimiento"
+                            [attr.aria-expanded]="!isCollapsedMantenimiento" aria-controls="collapseExample">
+                            <i class="fs-4 bi bi-save"></i> <span class="ms-1 d-none d-sm-inline">Mantenimientos</span>
                         </a>
+                        <div #collapse="ngbCollapse" [(ngbCollapse)]="!isCollapsedMantenimiento">
+                            <ul>
+                                <li>
+                                    <a routerLink="/usuario/mantenimientoUsuario" class="nav-link px-0 p-0"> <span
+                                            class="d-none d-sm-inline">Usuarios</span>
+
+                                    </a>
+                                </li>
+                                <li>
+                                    <a routerLink="/cliente/mantenimientoCliente" class="nav-link px-0 p-0"> <span
+                                            class="d-none d-sm-inline">Clientes</span>
+
+                                    </a>
+                                </li>
+                                <li>
+                                    <a routerLink="/estilista/mantenimientoEstilista" class="nav-link px-0 p-0"> <span
+                                            class="d-none d-sm-inline">Estilista</span>
+
+                                    </a>
+                                </li>
+                                <li>
+                                    <a routerLink="/servicio/mantenimientoServicio" class="nav-link px-0 p-0"> <span
+                                            class="d-none d-sm-inline">Servicios</span>
+
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
                     </li>
 
-                    <li class="nav-item ">
-                        <a id="menu" class="nav-link px-0 align-middle" role="button" data-toggle="dropdown"
-                            aria-expanded="false">
-                            <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Dashboard</span>
+                    <!--Consultas-->
+                    <li class="nav-item">
+                        <a id="option" role="button" class="nav-link px-0 align-middle"
+                            (click)="isCollapsedConsulta = ! isCollapsedConsulta"
+                            [attr.aria-expanded]="!isCollapsedConsulta" aria-controls="collapseExample">
+                            <i class="fs-4 bi bi-search"></i> <span class="ms-1 d-none d-sm-inline">Consultas</span>
                         </a>
-                        <ul aria-labelledby="#menu" class="dropdown-menu">
-                            <li class="w-100">
-                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 1 </a>
-                            </li>
-                            <li>
-                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 2 </a>
-                            </li>
-                        </ul>
+                        <div #collapse="ngbCollapse" [(ngbCollapse)]="!isCollapsedConsulta">
+                            <ul>
+                                <li>
+                                    <a routerLink="/usuario/consultaUsuarios" class="nav-link px-0 p-0"> <span
+                                            class="d-none d-sm-inline">Usuarios</span>
+
+                                    </a>
+                                </li>
+                                <li>
+                                    <a routerLink="/cliente/consultaClientes" class="nav-link px-0 p-0"> <span
+                                            class="d-none d-sm-inline">Clientes</span>
+
+                                    </a>
+                                </li>
+                                <li>
+                                    <a routerLink="/estilista/consultaEstilistas" class="nav-link px-0 p-0"> <span
+                                            class="d-none d-sm-inline">Estilista</span>
+
+                                    </a>
+                                </li>
+                                <li>
+                                    <a routerLink="/servicio/consultaServicios" class="nav-link px-0 p-0"> <span
+                                            class="d-none d-sm-inline">Servicios</span>
+
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
                     </li>
+
 
                 </ul>
             </div>
         </div>
         <!--CAROUSEL-->
         <div class="col" style="padding: 0; margin: 0;">
-
-
             <nav class="navbar navbar-expand-md navbar-dark bg-primary">
                 <div class="container-fluid">
-
-
                     <div class="col">
                         <div class="col-sm-1 offset-md-11" style="text-align: end;">
                             <div ngbDropdown class="d-inline-block">
