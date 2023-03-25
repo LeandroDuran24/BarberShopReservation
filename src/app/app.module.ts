@@ -16,7 +16,7 @@ import { RegistrarUsuarioComponent } from './components/usuario/registrar-usuari
 //modulos
 import { DataTablesModule } from "angular-datatables";
 import { ToastrModule } from 'ngx-toastr';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoadingComponent } from './components/shared/loading/loading.component';
 import { ConsultaUsuarioComponent } from './components/usuario/consulta-usuario/consulta-usuario.component';
 import { DashboardComponent } from './components/inicio/dashboard/dashboard.component';
@@ -37,6 +37,8 @@ import { EditarServicioComponent } from './components/servicio/editar-servicio/e
 import { ReservacionComponent } from './components/reservacion/reservacion.component';
 import { AgendarComponent } from './components/reservacion/agendar/agendar.component';
 import { CambiarPasswordComponent } from './components/usuario/cambiar-password/cambiar-password.component';
+import { JwtModule } from '@auth0/angular-jwt';
+import { AddTokenInterceptorInterceptor } from './helper/add-token-interceptor.interceptor';
 
 
 
@@ -75,9 +77,10 @@ import { CambiarPasswordComponent } from './components/usuario/cambiar-password/
     HttpClientModule,
     ReactiveFormsModule, RouterModule, BrowserAnimationsModule, NgbModule, NgbPaginationModule, NgbAlertModule,
     DataTablesModule,
-    ToastrModule.forRoot() // ToastrModule added
+    ToastrModule.forRoot(), // ToastrModule added
+    JwtModule
   ],
-  providers: [],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: AddTokenInterceptorInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

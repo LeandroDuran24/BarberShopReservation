@@ -44,12 +44,8 @@ export class InicioSesionComponent implements OnInit {
       this.loading = false;
       this.login.reset();
 
-
-
-      //Elimino el localstorage
-      this.usuarioService.removeNombreUsuario();
       //Guardo el usuario en el localStorage
-      this.usuarioService.setLocalStorage(data);
+      this.usuarioService.setLocalStorage(data.token);
 
       this.router.navigate(['/inicio']);
 

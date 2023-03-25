@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Usuario } from 'src/models/usuario';
 import { Observable, ObservedValueOf } from 'rxjs';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable({
   providedIn: 'root'
@@ -20,20 +21,26 @@ export class UsuarioService {
   }
 
 
-  setLocalStorage(user: Usuario): void {
-    localStorage.setItem('UsuarioActual', JSON.stringify(user));
+  setLocalStorage(user: string): void {
+    localStorage.setItem('token', (user));
   }
 
   getNombreUsuario(): string {
-    return JSON.parse(localStorage.getItem('UsuarioActual') || "");
+    return localStorage.getItem('token') as string;
   }
 
   removeNombreUsuario(): void {
 
-    localStorage.removeItem('UsuarioActual');
+    localStorage.removeItem('token');
   }
 
+  getTokenDecoded(): any {
 
+    const helper = new JwtHelperService();
+    const decodedToken = helper.decodeToken(localStorage.getItem('token') as string);
+    return decodedToken;
+
+  }
 
 
 
@@ -58,7 +65,7 @@ export class UsuarioService {
     return this.http.put(this.myAppUrl + this.myApiUrl, usuario);
   }
 
-  cambiarPassword(usuario: Usuario): Observable<any> {
+  cambiarPassword(usuario: any): Observable<any> {
     return this.http.put(this.myAppUrl + this.myApiUrl + 'cambiarPassword', usuario);
   }
 
