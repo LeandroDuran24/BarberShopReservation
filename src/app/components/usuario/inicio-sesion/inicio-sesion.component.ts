@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { LoginService } from 'src/app/services/login.service';
+import { UsuarioService } from 'src/app/services/usuario.service';
 import { Usuario } from 'src/models/usuario';
 
 @Component({
@@ -17,7 +18,7 @@ export class InicioSesionComponent implements OnInit {
   loading = false;
 
 
-  constructor(private formBuilder: FormBuilder, private router: Router, private loginService: LoginService, private toast: ToastrService) {
+  constructor(private formBuilder: FormBuilder, private router: Router, private loginService: LoginService, private usuarioService: UsuarioService, private toast: ToastrService) {
     this.login = this.formBuilder.group({
       usuario: ['', Validators.required],
       password: ['', Validators.required]
@@ -42,6 +43,14 @@ export class InicioSesionComponent implements OnInit {
     this.loginService.login(usuario).subscribe(data => {
       this.loading = false;
       this.login.reset();
+
+
+
+      //Elimino el localstorage
+      this.usuarioService.removeNombreUsuario();
+      //Guardo el usuario en el localStorage
+      this.usuarioService.setLocalStorage(data);
+
       this.router.navigate(['/inicio']);
 
     }, error => {

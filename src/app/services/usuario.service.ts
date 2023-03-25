@@ -20,6 +20,23 @@ export class UsuarioService {
   }
 
 
+  setLocalStorage(user: Usuario): void {
+    localStorage.setItem('UsuarioActual', JSON.stringify(user));
+  }
+
+  getNombreUsuario(): string {
+    return JSON.parse(localStorage.getItem('UsuarioActual') || "");
+  }
+
+  removeNombreUsuario(): void {
+
+    localStorage.removeItem('UsuarioActual');
+  }
+
+
+
+
+
 
   guardarUsuario(usuario: Usuario): Observable<any> {
 
@@ -39,6 +56,10 @@ export class UsuarioService {
 
   editarUsuario(usuario: Usuario): Observable<any> {
     return this.http.put(this.myAppUrl + this.myApiUrl, usuario);
+  }
+
+  cambiarPassword(usuario: Usuario): Observable<any> {
+    return this.http.put(this.myAppUrl + this.myApiUrl + 'cambiarPassword', usuario);
   }
 
   getUsuario(idUsuario: number): Observable<any> {
