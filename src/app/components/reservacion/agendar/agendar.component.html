@@ -34,44 +34,60 @@
 
             <div class="row">
 
-
                 <div class="col-md-10">
                     <div class="form-group">
                         <label>Estilista</label>
-                        <select class="form-control">
-                            <option value="null" [selected]="true" disabled>Seleccione...</option>
-                            <option *ngFor="let estilista of listEstilistas; let i=index" value="estilista.id">
-                                {{estilista.nombre}} {{estilista.apellidos}}
-                            </option>
+                        <!--Using items input-->
+                        <ng-select [items]="listEstilistas" bindLabel="nombre" bindValue="id" [(ngModel)]="selectedCar">
 
-                        </select>
+                            <ng-template ng-label-tmp let-item="item">
+                                {{item.nombre}} {{item.apellidos}}
+                            </ng-template>
+                            <ng-template ng-option-tmp let-item="item" let-search="searchTerm">
+                                {{item.nombre}} {{item.apellidos}}
+                            </ng-template>
+
+                        </ng-select>
                     </div>
                 </div>
 
             </div>
 
-            <div class="row">
 
+            <div class="row">
 
                 <div class="col-md-10">
                     <div class="form-group">
                         <label>Cliente</label>
-                        <select class="form-control">
-                            <option value="null" [selected]="true" disabled>Seleccione...</option>
-                            <option *ngFor="let cliente of listClientes; let i=index" value="cliente.id">
-                                {{cliente.nombre}} {{cliente.apellidos}}
-                            </option>
+                        <!--Using items input-->
+                        <ng-select [items]="listClientes" bindLabel="nombre" bindValue="id" [(ngModel)]="selectedCar">
 
-                        </select>
+                            <ng-template ng-label-tmp let-item="item">
+                                {{item.nombre}} {{item.apellidos}}
+                            </ng-template>
+                            <ng-template ng-option-tmp let-item="item" let-search="searchTerm">
+                                {{item.nombre}} {{item.apellidos}}
+                            </ng-template>
+
+                        </ng-select>
                     </div>
                 </div>
 
             </div>
 
+
             <div class="row">
-                <!--Using items input-->
-                <ng-select [items]="listServicios" bindLabel="nombre" bindValue="id" [(ngModel)]="selectedCar">
-                </ng-select>
+
+                <div class="col-md-10">
+                    <div class="form-group">
+                        <label>Servicio</label>
+                        <!--Using items input-->
+                        <ng-select [multiple]="true" groupBy="selectedAllGroup" [selectableGroup]="true"
+                            [items]="listServicios" bindLabel="nombre" bindValue="id" [(ngModel)]="selectedCar">
+                        </ng-select>
+                    </div>
+                </div>
+
             </div>
 
 
