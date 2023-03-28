@@ -20,67 +20,64 @@
                     </div>
                 </div>
 
-            </div>
-
-
-            <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-5">
                     <div class="form-group">
-                        <label>Name</label>
-                        <input type="text" class="form-control">
+                        <label>Hora de la Reserva</label>
+                        <input type="time" placeholder="Enter your Time" class="form-control" min="08:00:00"
+                            max="17:00:00" step="3600000">
 
                     </div>
                 </div>
-
-
-
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label>Apellidos</label>
-                        <input type="text" class="form-control">
-
-                    </div>
-                </div>
-
-
-            </div>
-
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label>Identificacion</label>
-                        <input type="text" class="form-control">
-
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label>Provincia</label>
-                        <input type="text" class="form-control">
-
-
-                    </div>
-                </div>
-
 
             </div>
 
 
             <div class="row">
 
-                <div class="col-md-9">
+
+                <div class="col-md-10">
                     <div class="form-group">
-                        <label>Direccion</label>
-                        <input type="text" class="form-control">
+                        <label>Estilista</label>
+                        <select class="form-control">
+                            <option value="null" [selected]="true" disabled>Seleccione...</option>
+                            <option *ngFor="let estilista of listEstilistas; let i=index" value="estilista.id">
+                                {{estilista.nombre}} {{estilista.apellidos}}
+                            </option>
 
-
+                        </select>
                     </div>
                 </div>
 
+            </div>
 
+            <div class="row">
+
+
+                <div class="col-md-10">
+                    <div class="form-group">
+                        <label>Cliente</label>
+                        <select class="form-control">
+                            <option value="null" [selected]="true" disabled>Seleccione...</option>
+                            <option *ngFor="let cliente of listClientes; let i=index" value="cliente.id">
+                                {{cliente.nombre}} {{cliente.apellidos}}
+                            </option>
+
+                        </select>
+                    </div>
+                </div>
 
             </div>
+
+            <div class="row">
+                <!--Using items input-->
+                <ng-select [items]="listServicios" bindLabel="nombre" bindValue="id" [(ngModel)]="selectedCar">
+                </ng-select>
+            </div>
+
+
+
+
+
 
 
 

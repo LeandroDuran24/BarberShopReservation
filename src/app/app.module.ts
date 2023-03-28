@@ -1,22 +1,11 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import { AppComponent } from './app.component';
 import { InicioSesionComponent } from './components/usuario/inicio-sesion/inicio-sesion.component';
 import { InicioComponent } from './components/inicio/inicio.component';
-import { RouterModule } from '@angular/router';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgbModule, NgbPaginationModule, NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
-import { RegistrarUsuarioComponent } from './components/usuario/registrar-usuario/registrar-usuario.component';
-
-//modulos
-import { DataTablesModule } from "angular-datatables";
-import { ToastrModule } from 'ngx-toastr';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoadingComponent } from './components/shared/loading/loading.component';
 import { ConsultaUsuarioComponent } from './components/usuario/consulta-usuario/consulta-usuario.component';
 import { DashboardComponent } from './components/inicio/dashboard/dashboard.component';
@@ -37,7 +26,30 @@ import { EditarServicioComponent } from './components/servicio/editar-servicio/e
 import { ReservacionComponent } from './components/reservacion/reservacion.component';
 import { AgendarComponent } from './components/reservacion/agendar/agendar.component';
 import { CambiarPasswordComponent } from './components/usuario/cambiar-password/cambiar-password.component';
+import { RegistrarUsuarioComponent } from './components/usuario/registrar-usuario/registrar-usuario.component';
+
+//modulos
+import { AppRoutingModule } from './app-routing.module';
+import { DataTablesModule } from "angular-datatables";
+import { RouterModule } from '@angular/router';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgbModule, NgbPaginationModule, NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ToastrModule } from 'ngx-toastr';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtModule } from '@auth0/angular-jwt';
+import { NgSelectModule } from '@ng-select/ng-select';
+
+
+
+// NGX Multi Select
+import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
+
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+
+
+//interceptor
 import { AddTokenInterceptorInterceptor } from './helper/add-token-interceptor.interceptor';
 
 
@@ -78,7 +90,11 @@ import { AddTokenInterceptorInterceptor } from './helper/add-token-interceptor.i
     ReactiveFormsModule, RouterModule, BrowserAnimationsModule, NgbModule, NgbPaginationModule, NgbAlertModule,
     DataTablesModule,
     ToastrModule.forRoot(), // ToastrModule added
-    JwtModule
+    JwtModule,
+    MatSelectModule,
+    MatFormFieldModule,
+    NgxMatSelectSearchModule,
+    NgSelectModule
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: AddTokenInterceptorInterceptor, multi: true }],
   bootstrap: [AppComponent]
