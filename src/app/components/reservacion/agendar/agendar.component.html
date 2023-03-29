@@ -2,16 +2,16 @@
 
     <h3 class="header text-center">Agendar Reservacion</h3>
     <div class="form-wrap">
-        <form id="survey-form">
+        <form id="survey-form" [formGroup]="agendarReservacion" (ngSubmit)="guardarReservacion()">
 
             <div class="row">
-                <div class="col-md-5">
+                <div class="col-md-3">
                     <div class="form-group">
                         <label>Fecha de la Reserva</label>
 
                         <div class="input-group">
-                            <input class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker
-                                #d="ngbDatepicker" />
+                            <input class="form-control" formControlName="fecha" placeholder="yyyy-mm-dd" name="dp"
+                                ngbDatepicker #d="ngbDatepicker" (dateSelect)="onSelect($event)" />
                             <button class="btn btn-outline-secondary bi bi-calendar3" (click)="d.toggle()"
                                 type="button"></button>
                         </div>
@@ -20,11 +20,11 @@
                     </div>
                 </div>
 
-                <div class="col-md-5">
+                <div class="col-md-3">
                     <div class="form-group">
                         <label>Hora de la Reserva</label>
-                        <input type="time" placeholder="Enter your Time" class="form-control" min="08:00:00"
-                            max="17:00:00" step="3600000">
+                        <input type="time" formControlName="hora" placeholder="Enter your Time" class="form-control"
+                            min="08:00:00" max="17:00:00" step="3600000">
 
                     </div>
                 </div>
@@ -34,13 +34,14 @@
 
             <div class="row">
 
-                <div class="col-md-10">
+                <div class="col-md-8">
                     <div class="form-group">
                         <label>Estilista</label>
                         <!--Using items input-->
-                        <ng-select [items]="listEstilistas" bindLabel="nombre" bindValue="id" [(ngModel)]="selectedCar">
+                        <ng-select [items]="listEstilistas" bindLabel="nombre" bindValue="id"
+                            formControlName="estilista">
 
-                            <ng-template ng-label-tmp let-item="item">
+                            <ng-template ng-label-tmp let-item=" item">
                                 {{item.nombre}} {{item.apellidos}}
                             </ng-template>
                             <ng-template ng-option-tmp let-item="item" let-search="searchTerm">
@@ -56,13 +57,13 @@
 
             <div class="row">
 
-                <div class="col-md-10">
+                <div class="col-md-8">
                     <div class="form-group">
                         <label>Cliente</label>
                         <!--Using items input-->
-                        <ng-select [items]="listClientes" bindLabel="nombre" bindValue="id" [(ngModel)]="selectedCar">
+                        <ng-select [items]="listClientes" bindLabel="nombre" bindValue="id" formControlName="cliente">
 
-                            <ng-template ng-label-tmp let-item="item">
+                            <ng-template ng-label-tmp let-item=" item">
                                 {{item.nombre}} {{item.apellidos}}
                             </ng-template>
                             <ng-template ng-option-tmp let-item="item" let-search="searchTerm">
@@ -78,24 +79,18 @@
 
             <div class="row">
 
-                <div class="col-md-10">
+                <div class="col-md-12">
                     <div class="form-group">
                         <label>Servicio</label>
                         <!--Using items input-->
-                        <ng-select [multiple]="true" groupBy="selectedAllGroup" [selectableGroup]="true"
-                            [items]="listServicios" bindLabel="nombre" bindValue="id" [(ngModel)]="selectedCar">
+                        <ng-select [ngModelOptions]="{standalone: true}" (change)="changeValueServicios($event)"
+                            [multiple]="true" groupBy="selectedAllGroup" [selectableGroup]="true"
+                            [items]="listServicios" bindLabel="nombre" bindValue="id" [(ngModel)]="selectedServicios">
                         </ng-select>
                     </div>
                 </div>
 
             </div>
-
-
-
-
-
-
-
 
             <div class="row">
                 <div class=" text-center ">
