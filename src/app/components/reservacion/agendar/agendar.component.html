@@ -18,6 +18,10 @@
 
 
                     </div>
+                    <span class="text-danger"
+                        *ngIf="agendarReservacion.get('fecha')?.hasError('required') && agendarReservacion.get('f'echa)?.touched">Fecha
+                        es
+                        requerida</span>
                 </div>
 
                 <div class="col-md-3">
@@ -27,6 +31,10 @@
                             min="08:00:00" max="17:00:00" step="3600000">
 
                     </div>
+                    <span class="text-danger"
+                        *ngIf="agendarReservacion.get('hora')?.hasError('required') && agendarReservacion.get('hora')?.touched">Hora
+                        es
+                        requerida</span>
                 </div>
 
             </div>
@@ -51,6 +59,10 @@
                         </ng-select>
                     </div>
                 </div>
+                <span class="text-danger"
+                    *ngIf="agendarReservacion.get('estilista')?.hasError('required') && agendarReservacion.get('estilista')?.touched">Estilista
+                    es
+                    requerido</span>
 
             </div>
 
@@ -72,6 +84,11 @@
 
                         </ng-select>
                     </div>
+
+                    <span class="text-danger"
+                        *ngIf="agendarReservacion.get('cliente')?.hasError('required') && agendarReservacion.get('cleient')?.touched">Cliente
+                        es
+                        requerido</span>
                 </div>
 
             </div>
@@ -88,6 +105,7 @@
                             [items]="listServicios" bindLabel="nombre" bindValue="id" [(ngModel)]="selectedServicios">
                         </ng-select>
                     </div>
+
                 </div>
 
             </div>
