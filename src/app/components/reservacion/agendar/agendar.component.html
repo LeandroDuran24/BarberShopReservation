@@ -94,8 +94,9 @@
 
             <div class="row">
                 <div class=" text-center ">
-                    <button type="submit" class="btn btn-primary"><span>Aceptar</span></button>
-                    <button type="button" class="btn btn-secondary"><span>Cancelar</span></button>
+                    <button type="submit" class="btn btn-primary"
+                        [disabled]="this.agendarReservacion.invalid"><span>Aceptar</span></button>
+                    <button type="button" class="btn btn-secondary" (click)="reset()"><span>Cancelar</span></button>
                 </div>
             </div>
         </form>
