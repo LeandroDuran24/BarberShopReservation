@@ -10,6 +10,7 @@ import { ServicioService } from 'src/app/services/servicio.service';
 import { Clientes } from 'src/models/cliente';
 import { Estilistas } from 'src/models/estilista';
 import { Reservacion } from 'src/models/reservacion';
+import { ReservacionDetalle } from 'src/models/reservacionDetalle';
 import { Servicios } from 'src/models/servicio';
 
 @Component({
@@ -40,8 +41,7 @@ export class AgendarComponent implements OnInit {
       fecha: [''],
       hora: ['', Validators.required],
       estilista: ['', Validators.required],
-      cliente: ['', Validators.required],
-      servicios: ['']
+      cliente: ['', Validators.required]
     })
 
   }
@@ -73,15 +73,12 @@ export class AgendarComponent implements OnInit {
 
   onSelect(evt: any) {
     this.selectedDate = new Date(evt.year, evt.month - 1, evt.day);
-    console.log(this.selectedDate.toISOString());
+    //console.log(this.selectedDate.toISOString());
   }
 
 
   changeValueServicios(val: Servicios) {
-
-
     this.listaServiciosSeleccionado.push(val)
-    console.log(this.listaServiciosSeleccionado);
   }
 
 
@@ -93,19 +90,29 @@ export class AgendarComponent implements OnInit {
   guardarReservacion(): any {
 
     var tamañoLista = this.listaServiciosSeleccionado.length;
-    console.log(this.listaServiciosSeleccionado[tamañoLista - 1]);
+    var arrayService: ReservacionDetalle[] = [];
 
+    this.selectedServicios.forEach((element) => {
+      arrayService.push({ servicioId: Number(element) })
+    });
+
+
+
+    this.agendarReservacion.value.servicios = this.selectedServicios;
 
     const reservacion: Reservacion = {
 
-      id: 0,
       estilistaId: this.agendarReservacion.value.estilista,
       clienteId: this.agendarReservacion.value.cliente,
       fecha: this.selectedDate,
       hora: this.agendarReservacion.value.hora,
-      listReservacionDetalle: this.listaServiciosSeleccionado[tamañoLista - 1],
+      listReservacionDetalle: arrayService
 
     }
+
+
+
+
 
 
 

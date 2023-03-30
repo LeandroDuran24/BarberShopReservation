@@ -1,13 +1,14 @@
+import { ReservacionDetalle } from "./reservacionDetalle";
 import { Servicios } from "./servicio";
 
 export class Reservacion {
-    id: number;
+    id?: number;
     clienteId: number;
     estilistaId: number;
     fecha: Date;
     hora: string;
 
-    listReservacionDetalle: Servicios;
+    listReservacionDetalle: ReservacionDetalle[];
 
 
     /**
@@ -19,6 +20,6 @@ export class Reservacion {
         this.estilistaId = 0;
         this.fecha = new Date;
         this.hora = '';
-        this.listReservacionDetalle = new Servicios();
+        this.listReservacionDetalle = [];
     }
 }
