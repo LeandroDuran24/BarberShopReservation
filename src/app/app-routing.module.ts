@@ -22,6 +22,7 @@ import { EditarServicioComponent } from './components/servicio/editar-servicio/e
 import { ReservacionComponent } from './components/reservacion/reservacion.component';
 import { AgendarComponent } from './components/reservacion/agendar/agendar.component';
 import { CambiarPasswordComponent } from './components/usuario/cambiar-password/cambiar-password.component';
+import { ConsultaReservacionComponent } from './components/reservacion/consulta-reservacion/consulta-reservacion.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -73,7 +74,7 @@ const routes: Routes = [
     path: 'reservacion', component: ReservacionComponent, children: [
       { path: '', component: InicioComponent },
       { path: 'agendar', component: AgendarComponent },
-      { path: 'consultaServicios', component: ConsultaServicioComponent },
+      { path: 'consultaReservaciones', component: ConsultaReservacionComponent },
       { path: 'editarServicio/:id', component: EditarServicioComponent },
 
     ]

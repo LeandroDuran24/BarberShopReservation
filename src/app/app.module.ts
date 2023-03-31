@@ -51,6 +51,7 @@ import { MatSelectModule } from '@angular/material/select';
 
 //interceptor
 import { AddTokenInterceptorInterceptor } from './helper/add-token-interceptor.interceptor';
+import { ConsultaReservacionComponent } from './components/reservacion/consulta-reservacion/consulta-reservacion.component';
 
 
 
@@ -80,7 +81,8 @@ import { AddTokenInterceptorInterceptor } from './helper/add-token-interceptor.i
     EditarServicioComponent,
     ReservacionComponent,
     AgendarComponent,
-    CambiarPasswordComponent
+    CambiarPasswordComponent,
+    ConsultaReservacionComponent
   ],
   imports: [
     BrowserModule,

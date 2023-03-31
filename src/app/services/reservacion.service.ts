@@ -21,4 +21,8 @@ export class ReservacionService {
   guardarReservacion(reservacion: Reservacion): Observable<any> {
     return this.http.post(this.myAppUrl + this.myApiUrl, reservacion);
   }
+
+  getReservaciones(): Observable<any> {
+    return this.http.get(this.myAppUrl + this.myApiUrl);
+  }
 }

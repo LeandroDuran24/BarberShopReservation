@@ -1,0 +1,75 @@
+<div class="container">
+    <div class="table-wrapper">
+        <div class="table-title">
+            <div class="row">
+                <div class="col-sm-10">
+                    <h2 class="text-center">Listado de Reservaciones </h2>
+                </div>
+                <div class="col-sm-2">
+                    <button class="btn " routerLink="/reservacion/agendar">
+                        <i class="bi bi-plus-circle"></i>Nuevo</button>
+                </div>
+            </div>
+        </div>
+        <table class=" table table-bordered table-striped table-hover" datatable [dtOptions]="dtOptions"
+            *ngIf="listReservacion.length">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th scope="col">Cliente</th>
+                    <th scope="col">Estilista</th>
+                    <th scope="col">Fecha Reserva</th>
+                    <th scope="col">Hora Reserva</th>
+                    <th scope="col">Usuario</th>
+                    <th>Actions</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let reservacion of listReservacion; let i = index">
+                    <td>{{i+1}}</td>
+                    <td>{{reservacion.cliente.nombre}} {{reservacion.cliente.apellidos}}</td>
+                    <td>{{reservacion.estilista.nombre}} {{reservacion.estilista.apellidos}}</td>
+                    <td>{{reservacion.fecha | date:"dd/MM/yyyy"}} </td>
+                    <td>{{reservacion.hora}}</td>
+                    <td>{{reservacion.usuario.nombreUsuario}} </td>
+                    <td>
+
+                        <button type="button" class="btn"><i class="bi bi-eye-fill" style="color: blue;"></i></button>
+
+                        <button type="button" class="btn"><i class="bi bi-pencil-square" style="color: blue;"
+                                routerLink="/reservacion/editarReservacion/{{reservacion.id}}"></i></button>
+                        <button class="btn"><i class="bi bi-trash3-fill" style="color: red;"
+                                (click)="eliminarReservacion(reservacion,content)"></i></button>
+
+                    </td>
+                </tr>
+
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<!--Modal ELiminar-->
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Eliminar Reserva</h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+        <form>
+            <div class="mb-3">
+
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer" style="justify-content: center;">
+
+        <div class="form-group text-center ">
+            <button type="button" class="btn btn-primary" (click)="confirmarEliminacion()"><span>Aceptar</span></button>
+            <button class="btn btn-secondary" (click)="modal.close('Save click')"><span>Cancelar</span></button>
+        </div>
+    </div>
+</ng-template>
