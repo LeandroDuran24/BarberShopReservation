@@ -35,7 +35,14 @@
                     <td>{{reservacion.usuario.nombreUsuario}} </td>
                     <td>
 
-                        <button type="button" class="btn"><i class="bi bi-eye-fill" style="color: blue;"></i></button>
+                        <ng-template #popContent>{{reservacion.fecha}}</ng-template>
+
+                        <button type="button" class="btn" placement="start" [ngbPopover]="popContent"
+                            popoverTitle="Servicios">
+                            <i class="bi bi-eye-fill" style="color:#00e676;"></i>
+                        </button>
+
+
 
                         <button type="button" class="btn"><i class="bi bi-pencil-square" style="color: blue;"
                                 routerLink="/reservacion/editarReservacion/{{reservacion.id}}"></i></button>
@@ -50,6 +57,7 @@
         </table>
     </div>
 </div>
+
 
 
 <!--Modal ELiminar-->
