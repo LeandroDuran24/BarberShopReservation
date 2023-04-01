@@ -26,7 +26,7 @@ export class ReservacionService {
     return this.http.get(this.myAppUrl + this.myApiUrl);
   }
 
-  getServiciosReservacion(idReserva: number): Observable<any> {
-    return this.http.get(this.myAppUrl + this.myApiUrl + "GetServicios/" + idReserva);
+  getReservacionesServicios(id: number): Observable<any> {
+    return this.http.get(this.myAppUrl + this.myApiUrl + "GetReservacionServicios/" + id);
   }
 }

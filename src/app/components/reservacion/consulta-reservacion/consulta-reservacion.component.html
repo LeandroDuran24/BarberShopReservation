@@ -35,11 +35,22 @@
                     <td>{{reservacion.usuario.nombreUsuario}} </td>
                     <td>
 
-                        <ng-template #popContent>{{reservacion.fecha}}</ng-template>
+
+                        <!--popover-->
+                        <ng-template #popContent>
+                            <ul *ngFor="let servicios of listReservacionServicios">
+                                <li>
+                                    {{servicios.servicio.nombre}}
+                                </li>
+
+                            </ul>
+
+                        </ng-template>
 
                         <button type="button" class="btn" placement="start" [ngbPopover]="popContent"
                             popoverTitle="Servicios">
-                            <i class="bi bi-eye-fill" style="color:#00e676;"></i>
+                            <i class="bi bi-eye-fill" (click)="getServiciosReserva(reservacion.id)"
+                                style="color:#00e676;"></i>
                         </button>
 
 

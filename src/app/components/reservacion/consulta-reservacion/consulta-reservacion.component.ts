@@ -13,6 +13,7 @@ export class ConsultaReservacionComponent implements OnInit {
 
 
   listReservacion: any = {};
+  listReservacionServicios: any[] = [];
   dtOptions: DataTables.Settings = {};
   closeResult = '';
   reservaId: number = 0;
@@ -31,7 +32,11 @@ export class ConsultaReservacionComponent implements OnInit {
     };
 
     this.getListResevaciones();
+
+
   }
+
+
 
 
   getListResevaciones(): void {
@@ -39,18 +44,30 @@ export class ConsultaReservacionComponent implements OnInit {
     this.reservacionServicio.getReservaciones().subscribe(data => {
 
       this.listReservacion = data;
-      console.log(data);
+
     }, error => {
 
       this.toastr.error(error.error, "Error!");
     })
 
+
   }
+
+
+  getServiciosReserva(id: number): void {
+
+    this.reservacionServicio.getReservacionesServicios(id).subscribe((data: any[]) => {
+      this.listReservacionServicios = data;
+    }, error => {
+      this.toastr.error(error.error, "Error!");
+    })
+  }
+
+
 
   eliminarReservacion(reserva: Reservacion, content: any): void {
 
     //this.reservaId = reserva.id;
-
     this.open(content);
   }
 
