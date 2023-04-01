@@ -16,7 +16,7 @@ export class ConsultaReservacionComponent implements OnInit {
   listReservacionServicios: any[] = [];
   dtOptions: DataTables.Settings = {};
   closeResult = '';
-  reservaId: number = 0;
+  idReserva: any;
 
   constructor(private reservacionServicio: ReservacionService, private toastr: ToastrService, private renderer: Renderer2, private modalService: NgbModal) {
 
@@ -67,23 +67,22 @@ export class ConsultaReservacionComponent implements OnInit {
 
   eliminarReservacion(reserva: Reservacion, content: any): void {
 
-    //this.reservaId = reserva.id;
+    this.idReserva = reserva.id;
     this.open(content);
   }
 
 
   confirmarEliminacion(): void {
 
-    /*
-        this.reservacionServicio.eliminarCliente(this.idCliente).subscribe(data => {
-          this.toast.info('El cliente ' + this.nombreCliente + ' fue eliminado', 'Eliminar Cliente!');
-          this.modalService.dismissAll();
-          this.getListClientes();
-    
-        }, error => {
-          console.log(error.error);
-          this.toast.error(error.error, 'Error!');
-        })*/
+
+    this.reservacionServicio.eliminarReservacion(this.idReserva).subscribe(data => {
+      this.toastr.info('La Reservacion fue eliminada', 'Eliminar Reservacion!');
+      this.modalService.dismissAll();
+      this.getListResevaciones();
+
+    }, error => {
+      this.toastr.error(error.error, 'Error!');
+    })
   }
 
 

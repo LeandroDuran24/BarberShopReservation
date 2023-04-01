@@ -29,4 +29,12 @@ export class ReservacionService {
   getReservacionesServicios(id: number): Observable<any> {
     return this.http.get(this.myAppUrl + this.myApiUrl + "GetReservacionServicios/" + id);
   }
+
+  editarReservacion(reservacion: Reservacion): Observable<any> {
+    return this.http.put(this.myAppUrl + this.myApiUrl, reservacion);
+  }
+
+  eliminarReservacion(idReserva: number): Observable<any> {
+    return this.http.delete(this.myAppUrl + this.myApiUrl + idReserva);
+  }
 }
