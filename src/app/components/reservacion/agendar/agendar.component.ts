@@ -28,11 +28,11 @@ export class AgendarComponent implements OnInit {
 
 
   listaServiciosSeleccionado: Servicios[] = [];
-
   selectedServicios: Servicios[] = [];
-
   agendarReservacion: FormGroup;
   selectedDate: Date = new Date();
+
+  precioServicios: any[] = [];
 
 
   constructor(private estilistaService: EstilistaService, private clienteService: ClienteService, private servicioService: ServicioService, private toastr: ToastrService, private fb: FormBuilder, private reservacionService: ReservacionService) {
@@ -78,7 +78,10 @@ export class AgendarComponent implements OnInit {
 
 
   changeValueServicios(val: Servicios) {
-    this.listaServiciosSeleccionado.push(val)
+
+    this.listaServiciosSeleccionado.push(val);
+    this.precioServicios.push(val);
+
   }
 
 
@@ -89,16 +92,30 @@ export class AgendarComponent implements OnInit {
 
   guardarReservacion(): any {
 
-    var tamañoLista = this.listaServiciosSeleccionado.length;
     var arrayService: ReservacionDetalle[] = [];
+    var array = [];
+    var minutosEstimado = 0;
+    var horaEstimada = 0;
+    var tiempoEstimado = 0;
+
 
     this.selectedServicios.forEach((element) => {
       arrayService.push({ servicioId: Number(element) })
     });
 
 
-
     this.agendarReservacion.value.servicios = this.selectedServicios;
+
+    array = this.precioServicios[this.precioServicios.length - 1];
+
+    array.forEach((element: any) => {
+      var [hours, minutes] = element.duracion.split(':');
+      horaEstimada += Number(hours);
+      minutosEstimado += Number(minutes);
+
+    });
+
+
 
     const reservacion: Reservacion = {
 
@@ -106,14 +123,10 @@ export class AgendarComponent implements OnInit {
       clienteId: this.agendarReservacion.value.cliente,
       fecha: this.selectedDate,
       hora: this.agendarReservacion.value.hora,
+      tiempoEstimadoCita: horaEstimada + ":" + minutosEstimado,
       listReservacionDetalle: arrayService
 
     }
-
-
-
-
-
 
 
 

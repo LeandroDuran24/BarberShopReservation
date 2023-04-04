@@ -7,6 +7,7 @@ export class Reservacion {
     estilistaId: number;
     fecha: Date;
     hora: string;
+    tiempoEstimadoCita: string;
 
     listReservacionDetalle: ReservacionDetalle[];
 
@@ -20,6 +21,7 @@ export class Reservacion {
         this.estilistaId = 0;
         this.fecha = new Date;
         this.hora = '';
+        this.tiempoEstimadoCita = '';
         this.listReservacionDetalle = [];
     }
 }
