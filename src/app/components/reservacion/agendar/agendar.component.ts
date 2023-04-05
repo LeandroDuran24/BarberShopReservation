@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { each } from 'jquery';
 import { ToastrService } from 'ngx-toastr';
 import { ReplaySubject, Subject, Subscription, takeUntil } from 'rxjs';
+import { CalendarioReservacionService } from 'src/app/services/calendario-reservacion.service';
 import { ClienteService } from 'src/app/services/cliente.service';
 import { EstilistaService } from 'src/app/services/estilista.service';
 import { ReservacionService } from 'src/app/services/reservacion.service';
@@ -31,11 +32,23 @@ export class AgendarComponent implements OnInit {
   selectedServicios: Servicios[] = [];
   agendarReservacion: FormGroup;
   selectedDate: Date = new Date();
+  listaCalendario: any[] = [];
 
   precioServicios: any[] = [];
 
+  horarios = [
+    { Hora: '08:00 A.M', Value: 8, Reservado: false },
+    { Hora: '09:00 A.M', Value: 9, Reservado: false },
+    { Hora: '10:00 A.M', Value: 10, Reservado: false },
+    { Hora: '11:00 A.M', Value: 11, Reservado: false },
+    { Hora: '12:00 A.M', Value: 12, Reservado: false }
+  ]
 
-  constructor(private estilistaService: EstilistaService, private clienteService: ClienteService, private servicioService: ServicioService, private toastr: ToastrService, private fb: FormBuilder, private reservacionService: ReservacionService) {
+
+
+
+
+  constructor(private estilistaService: EstilistaService, private calendarioService: CalendarioReservacionService, private clienteService: ClienteService, private servicioService: ServicioService, private toastr: ToastrService, private fb: FormBuilder, private reservacionService: ReservacionService) {
 
     this.agendarReservacion = fb.group({
       fecha: [''],
@@ -43,6 +56,9 @@ export class AgendarComponent implements OnInit {
       estilista: ['', Validators.required],
       cliente: ['', Validators.required]
     })
+
+
+
 
   }
 
@@ -84,11 +100,50 @@ export class AgendarComponent implements OnInit {
 
   }
 
+  changeValueEstilista(idEstilista: Estilistas) {
+    this.calendarioService.getCalendarioReservacion(idEstilista.id).subscribe(data => {
+      this.listaCalendario = data;
+
+    }, error => {
+      this.toastr.error(error.error, 'Error!');
+    });
+
+    setTimeout(() => {
+      console.log(this.listaCalendario[0].horaInicio.split(':')[0]);
+
+      this.horarios.forEach((element: any) => {
+
+
+        this.listaCalendario.forEach((calendario: any) => {
+
+          if (element.Value >= calendario.horaInicio.split(':')[0] && element.Value < calendario.horaFinal.split(':')[0]) {
+            element.Reservado = true;
+
+          }
+        })
+
+        /*  if (element.Value == 12) {
+            element.Reservado = true;
+          }*/
+
+      });
+
+    }, 200);
+
+
+
+
+
+  }
+
 
   reset(): any {
 
     this.agendarReservacion.reset();
   }
+
+
+
 
   guardarReservacion(): any {
 
@@ -96,8 +151,6 @@ export class AgendarComponent implements OnInit {
     var array = [];
     var minutosEstimado = 0;
     var horaEstimada = 0;
-    var tiempoEstimado = 0;
-
 
     this.selectedServicios.forEach((element) => {
       arrayService.push({ servicioId: Number(element) })
@@ -114,8 +167,6 @@ export class AgendarComponent implements OnInit {
       minutosEstimado += Number(minutes);
 
     });
-
-
 
     const reservacion: Reservacion = {
 

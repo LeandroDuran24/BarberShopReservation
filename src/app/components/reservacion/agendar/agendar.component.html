@@ -27,8 +27,47 @@
                 <div class="col-md-3">
                     <div class="form-group">
                         <label>Hora de la Reserva</label>
-                        <input type="time" formControlName="hora" placeholder="Enter your Time" class="form-control"
-                            min="08:00:00" max="17:00:00" step="3600000">
+                        <select class="form-control" formControlName="hora">
+                            <option value="null" [selected]="true" disabled>Seleccione...</option>
+
+                            <option *ngFor="let x of horarios; let i = index"
+                                [ngStyle]="{ backgroundColor: x.Reservado  ? '#D3D3D3' : 'transparent', color: x.Reservado ? 'red':'#00e676' }"
+                                [disabled]="x.Reservado">
+                                {{x.Hora}}
+                            </option>
+
+
+                            <!-- <option value="8">
+                                08:00 A.M
+                            </option>
+                            <option value="9">
+                                09:00 A.M
+                            </option>
+                            <option value="10">
+                                10:00 A.M
+                            </option>
+                            <option value="11">
+                                11:00 A.M
+                            </option>
+                            <option value="12">
+                                12:00 P.M
+                            </option>
+                            <option value="1">
+                                01:00 P.M
+                            </option>
+                            <option value="2">
+                                02:00 P.M
+                            </option>
+                            <option value="3">
+                                03:00 P.M
+                            </option>
+                            <option value="4">
+                                04:00 P.M
+                            </option>-->
+
+                        </select>
+                        <!-- <input type="time" formControlName="hora" placeholder="Enter your Time" class="form-control"
+                            min="08:00" max="17:00">-->
 
                     </div>
                     <span class="text-danger"
@@ -47,7 +86,7 @@
                         <label>Estilista</label>
                         <!--Using items input-->
                         <ng-select [items]="listEstilistas" bindLabel="nombre" bindValue="id"
-                            formControlName="estilista">
+                            formControlName="estilista" (change)="changeValueEstilista($event)">
 
                             <ng-template ng-label-tmp let-item=" item">
                                 {{item.nombre}} {{item.apellidos}}
