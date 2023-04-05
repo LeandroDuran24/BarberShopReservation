@@ -17,6 +17,8 @@ export class ConsultaReservacionComponent implements OnInit {
   dtOptions: DataTables.Settings = {};
   closeResult = '';
   idReserva: any;
+  nombreCliente = '';
+  fechaReserva = '';
 
   constructor(private reservacionServicio: ReservacionService, private toastr: ToastrService, private renderer: Renderer2, private modalService: NgbModal) {
 
@@ -65,9 +67,11 @@ export class ConsultaReservacionComponent implements OnInit {
 
 
 
-  eliminarReservacion(reserva: Reservacion, content: any): void {
+  eliminarReservacion(reserva: any, content: any): void {
 
     this.idReserva = reserva.id;
+    this.nombreCliente = reserva.cliente.nombre + reserva.cliente.apellidos
+    this.fechaReserva = reserva.fecha
     this.open(content);
   }
 

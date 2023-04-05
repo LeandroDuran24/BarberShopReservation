@@ -35,7 +35,6 @@
                     <td>{{reservacion.usuario.nombreUsuario}} </td>
                     <td>
 
-
                         <!--popover-->
                         <ng-template #popContent>
                             <ul *ngFor="let servicios of listReservacionServicios">
@@ -80,6 +79,14 @@
     <div class="modal-body">
         <form>
             <div class="mb-3">
+
+
+                <label>Esta seguro que desea eliminiar la reserva de <strong class="text-danger">
+                        {{nombreCliente}} </strong> para la fecha <strong class="text-danger"> {{fechaReserva |
+                        date:"dd/MM/yyyy"}}
+                    </strong>
+
+                    ?</label>
 
             </div>
         </form>

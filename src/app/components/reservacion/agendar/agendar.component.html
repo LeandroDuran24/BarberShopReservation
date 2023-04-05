@@ -5,7 +5,7 @@
         <form id="survey-form" [formGroup]="agendarReservacion" (ngSubmit)="guardarReservacion()">
 
             <div class="row">
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <div class="form-group">
                         <label>Fecha de la Reserva</label>
 
@@ -23,65 +23,7 @@
                         es
                         requerida</span>
                 </div>
-
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <label>Hora de la Reserva</label>
-                        <select class="form-control" formControlName="hora">
-                            <option value="null" [selected]="true" disabled>Seleccione...</option>
-
-                            <option *ngFor="let x of horarios; let i = index"
-                                [ngStyle]="{ backgroundColor: x.Reservado  ? '#D3D3D3' : 'transparent', color: x.Reservado ? 'red':'#00e676' }"
-                                [disabled]="x.Reservado">
-                                {{x.Hora}}
-                            </option>
-
-
-                            <!-- <option value="8">
-                                08:00 A.M
-                            </option>
-                            <option value="9">
-                                09:00 A.M
-                            </option>
-                            <option value="10">
-                                10:00 A.M
-                            </option>
-                            <option value="11">
-                                11:00 A.M
-                            </option>
-                            <option value="12">
-                                12:00 P.M
-                            </option>
-                            <option value="1">
-                                01:00 P.M
-                            </option>
-                            <option value="2">
-                                02:00 P.M
-                            </option>
-                            <option value="3">
-                                03:00 P.M
-                            </option>
-                            <option value="4">
-                                04:00 P.M
-                            </option>-->
-
-                        </select>
-                        <!-- <input type="time" formControlName="hora" placeholder="Enter your Time" class="form-control"
-                            min="08:00" max="17:00">-->
-
-                    </div>
-                    <span class="text-danger"
-                        *ngIf="agendarReservacion.get('hora')?.hasError('required') && agendarReservacion.get('hora')?.touched">Hora
-                        es
-                        requerida</span>
-                </div>
-
-            </div>
-
-
-            <div class="row">
-
-                <div class="col-md-8">
+                <div class="col-md-6">
                     <div class="form-group">
                         <label>Estilista</label>
                         <!--Using items input-->
@@ -97,18 +39,46 @@
 
                         </ng-select>
                     </div>
+                    <span class="text-danger"
+                        *ngIf="agendarReservacion.get('estilista')?.hasError('required') && agendarReservacion.get('estilista')?.touched">Estilista
+                        es
+                        requerido</span>
                 </div>
-                <span class="text-danger"
-                    *ngIf="agendarReservacion.get('estilista')?.hasError('required') && agendarReservacion.get('estilista')?.touched">Estilista
-                    es
-                    requerido</span>
+
+
+
 
             </div>
 
 
             <div class="row">
 
-                <div class="col-md-8">
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Hora de la Reserva</label>
+                        <select class="form-control" formControlName="hora">
+                            <option value="null" [selected]="true" disabled>Seleccione...</option>
+
+                            <option *ngFor="let x of horarios; let i = index"
+                                [ngStyle]="{ backgroundColor: x.Reservado  ? '#D3D3D3' : 'transparent', color: x.Reservado ? 'red':'#00e676' }"
+                                [disabled]="x.Reservado" value="{{x.valor}}">
+                                {{x.Hora}}
+                            </option>
+
+                        </select>
+                    </div>
+                    <span class="text-danger"
+                        *ngIf="agendarReservacion.get('hora')?.hasError('required') && agendarReservacion.get('hora')?.touched">Hora
+                        es
+                        requerida</span>
+                </div>
+
+
+
+
+
+                <div class="col-md-6">
                     <div class="form-group">
                         <label>Cliente</label>
                         <!--Using items input-->
@@ -125,12 +95,14 @@
                     </div>
 
                     <span class="text-danger"
-                        *ngIf="agendarReservacion.get('cliente')?.hasError('required') && agendarReservacion.get('cleient')?.touched">Cliente
+                        *ngIf="agendarReservacion.get('cliente')?.hasError('required') && agendarReservacion.get('cliente')?.touched">Cliente
                         es
                         requerido</span>
                 </div>
 
             </div>
+
+
 
 
             <div class="row">

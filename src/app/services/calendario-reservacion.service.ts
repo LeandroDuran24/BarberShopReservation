@@ -18,8 +18,8 @@ export class CalendarioReservacionService {
 
   }
 
-  getCalendarioReservacion(idEstilista: number): Observable<any> {
-    return this.http.get(this.myAppUrl + this.myApiUrl + idEstilista);
+  getCalendarioReservacion(idEstilista: number, fechaReserva: any): Observable<any> {
+    return this.http.get(this.myAppUrl + this.myApiUrl + idEstilista + "/" + fechaReserva);
   }
 
 

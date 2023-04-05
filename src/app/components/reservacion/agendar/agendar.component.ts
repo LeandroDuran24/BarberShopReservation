@@ -37,11 +37,23 @@ export class AgendarComponent implements OnInit {
   precioServicios: any[] = [];
 
   horarios = [
-    { Hora: '08:00 A.M', Value: 8, Reservado: false },
-    { Hora: '09:00 A.M', Value: 9, Reservado: false },
-    { Hora: '10:00 A.M', Value: 10, Reservado: false },
-    { Hora: '11:00 A.M', Value: 11, Reservado: false },
-    { Hora: '12:00 A.M', Value: 12, Reservado: false }
+    { Hora: '08:00 A.M', valor: '8:00', Value: 8, Reservado: false },
+    { Hora: '08:30 A.M', valor: '8:30', Value: 8.31, Reservado: false },
+    { Hora: '09:00 A.M', valor: '9:00', Value: 9, Reservado: false },
+    { Hora: '09:30 A.M', valor: '9:30', Value: 9.31, Reservado: false },
+    { Hora: '10:00 A.M', valor: '10:00', Value: 10, Reservado: false },
+    { Hora: '10:30 A.M', valor: '10:30', Value: 10.31, Reservado: false },
+    { Hora: '11:00 A.M', valor: '11:00', Value: 11, Reservado: false },
+    { Hora: '11:30 A.M', valor: '11:30', Value: 11.31, Reservado: false },
+    { Hora: '12:00 A.M', valor: '12:00', Value: 12, Reservado: false },
+    { Hora: '12:30 A.M', valor: '12:30', Value: 12.31, Reservado: false },
+    { Hora: '01:00 P.M', valor: '1:00', Value: 13, Reservado: false },
+    { Hora: '01:30 P.M', valor: '1:30', Value: 13.31, Reservado: false },
+    { Hora: '02:00 P.M', valor: '2:00', Value: 14, Reservado: false },
+    { Hora: '02:30 P.M', valor: '2:30', Value: 14.31, Reservado: false },
+    { Hora: '03:00 P.M', valor: '3:00', Value: 15, Reservado: false },
+    { Hora: '03:30 P.M', valor: '3:30', Value: 15.31, Reservado: false },
+    { Hora: '04:00 P.M', valor: '4:00', Value: 16, Reservado: false },
   ]
 
 
@@ -89,7 +101,7 @@ export class AgendarComponent implements OnInit {
 
   onSelect(evt: any) {
     this.selectedDate = new Date(evt.year, evt.month - 1, evt.day);
-    //console.log(this.selectedDate.toISOString());
+    //console.log(this.selectedDate.toLocaleDateString());
   }
 
 
@@ -101,38 +113,41 @@ export class AgendarComponent implements OnInit {
   }
 
   changeValueEstilista(idEstilista: Estilistas) {
-    this.calendarioService.getCalendarioReservacion(idEstilista.id).subscribe(data => {
+
+    //vuelvo false 
+    this.horarios.forEach(element => {
+
+      element.Reservado = false;
+    });
+
+    this.calendarioService.getCalendarioReservacion(idEstilista.id, this.selectedDate.toISOString()).subscribe(data => {
       this.listaCalendario = data;
 
     }, error => {
+      console.log(error.error.message)
       this.toastr.error(error.error, 'Error!');
     });
 
+
+
+    //lo lleno depende de las reservas
     setTimeout(() => {
-      console.log(this.listaCalendario[0].horaInicio.split(':')[0]);
+
+      var horaFinalConcatenada = 0.0;
 
       this.horarios.forEach((element: any) => {
-
-
         this.listaCalendario.forEach((calendario: any) => {
-
-          if (element.Value >= calendario.horaInicio.split(':')[0] && element.Value < calendario.horaFinal.split(':')[0]) {
+          horaFinalConcatenada = Number(calendario.horaFinal.split(':')[0] + '.' + calendario.horaFinal.split(':')[1])
+          if (element.Value >= calendario.horaInicio.split(':')[0] && element.Value < horaFinalConcatenada) {
             element.Reservado = true;
+
 
           }
         })
 
-        /*  if (element.Value == 12) {
-            element.Reservado = true;
-          }*/
-
       });
 
-    }, 200);
-
-
-
-
+    }, 300);
 
   }
 
@@ -140,6 +155,7 @@ export class AgendarComponent implements OnInit {
   reset(): any {
 
     this.agendarReservacion.reset();
+    this.selectedServicios = [];
   }
 
 
@@ -187,7 +203,7 @@ export class AgendarComponent implements OnInit {
       this.toastr.success('Se ha registrado su Reservacion', 'Registro Exitoso!');
       this.reset();
     }, error => {
-      console.log(error.error)
+      this.reset();
       this.toastr.error(error.error, 'Error!');
     })
 
