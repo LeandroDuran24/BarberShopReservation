@@ -39,7 +39,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtModule } from '@auth0/angular-jwt';
 import { NgSelectModule } from '@ng-select/ng-select';
-
+import { NgChartsModule } from 'ng2-charts';
 
 
 
@@ -97,7 +97,8 @@ import { ConsultaReservacionComponent } from './components/reservacion/consulta-
     MatSelectModule,
     MatFormFieldModule,
     NgxMatSelectSearchModule,
-    NgSelectModule
+    NgSelectModule,
+    NgChartsModule
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: AddTokenInterceptorInterceptor, multi: true }],
   bootstrap: [AppComponent]

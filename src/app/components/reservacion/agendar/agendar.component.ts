@@ -116,7 +116,6 @@ export class AgendarComponent implements OnInit {
 
     //vuelvo false 
     this.horarios.forEach(element => {
-
       element.Reservado = false;
     });
 
