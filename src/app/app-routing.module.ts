@@ -23,13 +23,14 @@ import { ReservacionComponent } from './components/reservacion/reservacion.compo
 import { AgendarComponent } from './components/reservacion/agendar/agendar.component';
 import { CambiarPasswordComponent } from './components/usuario/cambiar-password/cambiar-password.component';
 import { ConsultaReservacionComponent } from './components/reservacion/consulta-reservacion/consulta-reservacion.component';
+import { DashComponent } from './components/inicio/dash/dash.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: InicioSesionComponent },
   {
     path: 'inicio', component: InicioComponent, children: [
-      { path: '', component: DashboardComponent },
+      { path: '', component: DashComponent },
     ]
   },
   {

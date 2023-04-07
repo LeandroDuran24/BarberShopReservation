@@ -53,6 +53,18 @@ import { MatSelectModule } from '@angular/material/select';
 //interceptor
 import { AddTokenInterceptorInterceptor } from './helper/add-token-interceptor.interceptor';
 import { ConsultaReservacionComponent } from './components/reservacion/consulta-reservacion/consulta-reservacion.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import { DashComponent } from './components/inicio/dash/dash.component';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatCardModule } from '@angular/material/card';
+import { MatMenuModule } from '@angular/material/menu';
+import { CardComponent } from './card/card.component';
+import { ChartComponent } from './chart/chart.component';
 
 
 
@@ -83,7 +95,11 @@ import { ConsultaReservacionComponent } from './components/reservacion/consulta-
     ReservacionComponent,
     AgendarComponent,
     CambiarPasswordComponent,
-    ConsultaReservacionComponent
+    ConsultaReservacionComponent,
+
+    DashComponent,
+      CardComponent,
+      ChartComponent
   ],
   imports: [
     BrowserModule,
@@ -98,7 +114,16 @@ import { ConsultaReservacionComponent } from './components/reservacion/consulta-
     MatFormFieldModule,
     NgxMatSelectSearchModule,
     NgSelectModule,
-    NgChartsModule
+    NgChartsModule,
+    LayoutModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule,
+    MatGridListModule,
+    MatCardModule,
+    MatMenuModule
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: AddTokenInterceptorInterceptor, multi: true }],
   bootstrap: [AppComponent]
