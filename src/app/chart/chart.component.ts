@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Chart, LinearScale, registerables } from 'chart.js';
+import { ClienteService } from '../services/cliente.service';
+import { ReservacionService } from '../services/reservacion.service';
+import { ServicioService } from '../services/servicio.service';
 Chart.register(...registerables);
 
 @Component({
@@ -9,9 +12,6 @@ Chart.register(...registerables);
 })
 export class ChartComponent implements OnInit {
   public chart: any;
-
-
-
   ngOnInit(): void {
     this.createChart();
   }
@@ -28,14 +28,16 @@ export class ChartComponent implements OnInit {
           {
             label: "Reservaciones",
             data: ['17', '6', '21', '9', '2'],
-            backgroundColor: '#00DDFF'
+            backgroundColor: '#bbdefb'
 
           }
 
         ]
       },
       options: {
-        aspectRatio: 2.1
+        aspectRatio: 3.5,
+
+
       }
 
     });

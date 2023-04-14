@@ -31,25 +31,23 @@
   <mat-grid-list cols="3" rowHeight="113px">
     <!--Mini Cards-->
     <mat-grid-tile [colspan]="1" [rowspan]="1">
-      <app-card title="Clientes" color="#e07768">
-        <div>Mini Card Content Here</div>
+      <app-card title="Clientes" color="#e07768" contenido="{{totalClientes}}">
       </app-card>
     </mat-grid-tile>
 
     <mat-grid-tile [colspan]="1" [rowspan]="1">
-      <app-card title="Reservaciones" color="#6eadd4">
-        <div>Mini Card Content Here</div>
+      <app-card title="Reservaciones" color="#6eadd4" contenido="{{totalReservaciones}}">
       </app-card>
     </mat-grid-tile>
 
     <mat-grid-tile [colspan]="1" [rowspan]="1">
-      <app-card title="Servicios" color="#4aada9">
-        <div>Mini Card Content Here</div>
+      <app-card title="Servicios" color="#4aada9" contenido="{{totalServicios}}">
+
       </app-card>
     </mat-grid-tile>
 
     <!--Charts-->
-    <mat-grid-tile [colspan]="2" [rowspan]="3">
+    <mat-grid-tile [colspan]="3" [rowspan]="3">
       <app-card>
         <app-chart></app-chart>
       </app-card>
