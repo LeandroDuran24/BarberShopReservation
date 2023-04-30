@@ -9,4 +9,6 @@ export class CardComponent {
   @Input() title: string = '';
   @Input() color: string = '';
   @Input() contenido: string = '';
+
+
 }

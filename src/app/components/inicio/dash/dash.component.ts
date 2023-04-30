@@ -4,6 +4,7 @@ import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { ClienteService } from 'src/app/services/cliente.service';
 import { ServicioService } from 'src/app/services/servicio.service';
 import { ReservacionService } from 'src/app/services/reservacion.service';
+import { EstilistaService } from 'src/app/services/estilista.service';
 
 @Component({
   selector: 'app-dash',
@@ -16,10 +17,10 @@ export class DashComponent {
   totalClientes: number = 0;
   totalReservaciones: number = 0;
   totalServicios: number = 0;
+  listEstilista: any;
 
 
-
-  constructor(private breakpointObserver: BreakpointObserver, private clienteService: ClienteService, private serviciosService: ServicioService, private reservaService: ReservacionService) {
+  constructor(private breakpointObserver: BreakpointObserver, private clienteService: ClienteService, private serviciosService: ServicioService, private reservaService: ReservacionService, private estilistaService: EstilistaService) {
 
     this.clienteService.getClientes().subscribe(data => {
       this.totalClientes = (data).length;
