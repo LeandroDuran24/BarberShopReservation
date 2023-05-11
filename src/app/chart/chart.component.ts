@@ -34,9 +34,6 @@ export class ChartComponent implements OnInit {
 
       });
 
-
-      console.log(this.nombreEstilista);
-
     })
 
   }
@@ -48,9 +45,10 @@ export class ChartComponent implements OnInit {
 
       data: {// values on X-Axis
         labels: this.nombreEstilista,
+        
         datasets: [
           {
-            label: "Reservaciones",
+            label: "Cantidad",
             data: ['17', '6'],
             backgroundColor: '#bbdefb'
 
