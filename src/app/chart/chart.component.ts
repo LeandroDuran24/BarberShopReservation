@@ -16,7 +16,7 @@ export class ChartComponent implements OnInit {
   public chart: any;
   listEstilista = {};
   nombreEstilista: string[] = [];
-
+  reservacionesHoy: string[] = [];
 
 
 
@@ -25,18 +25,19 @@ export class ChartComponent implements OnInit {
   }
 
 
-  constructor(private estilistaService: EstilistaService) {
+  constructor(private estilistaService: EstilistaService, private reservacionesService: ReservacionService) {
+
     this.estilistaService.getEstilistas().subscribe(data => {
       this.listEstilista = data;
-
       data.forEach((element: Estilistas) => {
         this.nombreEstilista.push(element.nombre + ' ' + element.apellidos);
-
       });
+    })
 
 
-      console.log(this.nombreEstilista);
-
+    this.reservacionesService.reservacionesHoy().subscribe(data => {
+      this.reservacionesHoy = data;
+      console.log(data);
     })
 
   }
@@ -51,7 +52,7 @@ export class ChartComponent implements OnInit {
         datasets: [
           {
             label: "Reservaciones",
-            data: ['17', '6'],
+            data: ['10', '6'],
             backgroundColor: '#bbdefb'
 
           }

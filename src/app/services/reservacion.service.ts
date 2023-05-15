@@ -37,4 +37,8 @@ export class ReservacionService {
   eliminarReservacion(idReserva: number): Observable<any> {
     return this.http.delete(this.myAppUrl + this.myApiUrl + idReserva);
   }
+
+  reservacionesHoy(): Observable<any> {
+    return this.http.get(this.myAppUrl + this.myApiUrl + "GetReservacionesHoy");
+  }
 }
